@@ -14,6 +14,12 @@
             "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\blutility\\uht\\blutilitymenuextensions.generated.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\blutility\\uht\\assetactionutility.generated.h",
             "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\intermediate\\build\\win64\\unrealeditor\\inc\\supermanager\\uht\\quickassetaction.generated.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\blutility\\public\\editorutilitylibrary.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\engine\\classes\\kismet\\blueprintasyncactionbase.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\blueprintasyncactionbase.generated.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\blutility\\uht\\editorutilitylibrary.generated.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\plugins\\editor\\editorscriptingutilities\\source\\editorscriptingutilities\\public\\editorassetlibrary.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\plugins\\editor\\editorscriptingutilities\\intermediate\\build\\win64\\unrealeditor\\inc\\editorscriptingutilities\\uht\\editorassetlibrary.generated.h",
             "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\debugheader.h"
         ],
         "ImportedModules": [],

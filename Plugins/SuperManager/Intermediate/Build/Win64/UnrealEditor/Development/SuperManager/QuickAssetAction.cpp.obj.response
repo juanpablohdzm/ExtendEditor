@@ -277,6 +277,11 @@ D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Source\SuperManager\Private\As
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\Blutility\UHT
 /I Editor\Blutility\Classes
 /I Editor\Blutility\Public
+/I ..\Plugins\Editor\EditorScriptingUtilities\Intermediate\Build\Win64\UnrealEditor\Inc\EditorScriptingUtilities\UHT
+/I ..\Plugins\Editor\EditorScriptingUtilities\Source
+/I ..\Plugins\Editor\EditorScriptingUtilities\Source\EditorScriptingUtilities\Public
+/I ..\Intermediate\Build\Win64\UnrealEditor\Inc\StaticMeshEditor\UHT
+/I Editor\StaticMeshEditor\Public
 /external:W0
 /external:I ThirdParty\mimalloc\include
 /external:I ThirdParty\LibTiff\Source\Win64
