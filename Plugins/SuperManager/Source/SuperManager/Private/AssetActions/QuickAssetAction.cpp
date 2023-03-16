@@ -10,7 +10,8 @@ void UQuickAssetAction::DuplicateAssets(int32 NumOfDuplicates)
 {
 	if(NumOfDuplicates <= 0)
 	{
-		Print(TEXT("Please enter a valid number of duplicates"), FColor::Red);
+		FText Title = FText::FromString(TEXT("Invalid number of duplicates"));
+		ShowMessageDialog((TEXT("Please enter a valid number of duplicates")), Title, EAppMsgType::Ok);
 		return;
 	}
 
