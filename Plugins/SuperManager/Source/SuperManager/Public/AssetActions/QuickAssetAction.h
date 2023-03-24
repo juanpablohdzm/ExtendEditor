@@ -28,5 +28,7 @@ public:
 
 private:
 	TMap<UClass*, FString> PrefixMap;
+
+	void FixUpRedirectors();
 	
 };

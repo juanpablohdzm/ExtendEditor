@@ -303,10 +303,10 @@ D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\Unrea
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"
-/FI"D:\UnrealEngine\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/FI"D:\UnrealEngine\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h"
 /FI"D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Definitions.SuperManager.h"
-/Yu"D:\UnrealEngine\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"D:\UnrealEngine\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
+/Yu"D:\UnrealEngine\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h"
+/Fp"D:\UnrealEngine\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h.pch"
 /Fo"D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Module.SuperManager.cpp.obj"
 /sourceDependencies D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Module.SuperManager.cpp.dep.json
 /Zc:inline

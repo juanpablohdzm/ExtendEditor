@@ -12,6 +12,8 @@
 #include "NiagaraSystem.h"
 #include "NiagaraEmitter.h"
 #include "ObjectTools.h"
+#include "AssetRegistry/AssetRegistryModule.h"
+#include "AssetToolsModule.h"
 
 UQuickAssetAction::UQuickAssetAction()
 {
@@ -116,6 +118,8 @@ void UQuickAssetAction::RemoveUnusedAssets()
 	TArray<FAssetData> Assets = UEditorUtilityLibrary::GetSelectedAssetData();
 	TArray<FAssetData> UnusedAssets;
 
+	FixUpRedirectors();
+
 	for(auto& Asset : Assets)
 	{
 		TArray<FString> AssetReferences = UEditorAssetLibrary::FindPackageReferencersForAsset(Asset.GetSoftObjectPath().ToString());
@@ -132,4 +136,34 @@ void UQuickAssetAction::RemoveUnusedAssets()
 	}
 
 	ObjectTools::DeleteAssets(UnusedAssets, true);
+}
+
+void UQuickAssetAction::FixUpRedirectors()
+{
+	//Get asset registry module that will help us get all the assets
+	FAssetRegistryModule& AssetRegistryModule = FModuleManager::Get().LoadModuleChecked<FAssetRegistryModule>(TEXT("AssetRegistry"));
+	FARFilter Filter{};
+	Filter.bRecursiveClasses = true;
+	Filter.PackagePaths.Emplace("/Game");
+	Filter.ClassNames.Emplace("ObjectRedirector");
+
+	TArray<FAssetData> OutRedirectors;
+	AssetRegistryModule.Get().GetAssets(Filter,OutRedirectors);
+	////////////////////////
+
+	//Cast redirectors to UObjectRedirector and add them to array
+	TArray<UObjectRedirector*> RedirectorsToFixArray;
+	RedirectorsToFixArray.Reserve(OutRedirectors.Num());
+	for(const auto& RedirectorData: OutRedirectors)
+	{
+		UObjectRedirector* Redirector = Cast<UObjectRedirector>(RedirectorData.GetAsset());
+		if(Redirector)
+		{
+			RedirectorsToFixArray.Add(Redirector);
+		}
+	}
+
+	//Fix redirectors
+	FAssetToolsModule& AssetToolsModule = FModuleManager::LoadModuleChecked<FAssetToolsModule>(TEXT("AssetTools"));
+	AssetToolsModule.Get().FixupReferencers(RedirectorsToFixArray);
 }
