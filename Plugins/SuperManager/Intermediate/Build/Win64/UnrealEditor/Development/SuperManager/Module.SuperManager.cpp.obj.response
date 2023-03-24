@@ -282,6 +282,18 @@ D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\Unrea
 /I ..\Plugins\Editor\EditorScriptingUtilities\Source\EditorScriptingUtilities\Public
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\StaticMeshEditor\UHT
 /I Editor\StaticMeshEditor\Public
+/I ..\Plugins\FX\Niagara\Intermediate\Build\Win64\UnrealEditor\Inc\Niagara\UHT
+/I ..\Plugins\FX\Niagara\Source
+/I ..\Plugins\FX\Niagara\Source\Niagara\Classes
+/I ..\Plugins\FX\Niagara\Source\Niagara\Public
+/I ..\Plugins\FX\Niagara\Intermediate\Build\Win64\UnrealEditor\Inc\NiagaraCore\UHT
+/I ..\Plugins\FX\Niagara\Source\NiagaraCore\Public
+/I ..\Intermediate\Build\Win64\UnrealEditor\Inc\VectorVM\UHT
+/I Runtime\VectorVM\Public
+/I ..\Plugins\FX\Niagara\Intermediate\Build\Win64\UnrealEditor\Inc\NiagaraShader\UHT
+/I ..\Plugins\FX\Niagara\Source\NiagaraShader\Public
+/I ..\Plugins\FX\Niagara\Source\NiagaraVertexFactories\Public
+/I Developer\DesktopPlatform\Public
 /external:W0
 /external:I ThirdParty\mimalloc\include
 /external:I ThirdParty\LibTiff\Source\Win64

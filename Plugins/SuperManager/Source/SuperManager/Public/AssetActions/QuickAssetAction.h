@@ -14,8 +14,19 @@ class SUPERMANAGER_API UQuickAssetAction : public UAssetActionUtility
 {
 	GENERATED_BODY()
 
+	UQuickAssetAction();
+
 public:
 	UFUNCTION(CallInEditor)
 	void DuplicateAssets(int32 NumOfDuplicates);
+
+	UFUNCTION(CallInEditor)
+	void AddPrefixesToSelectedAssets();
+
+	UFUNCTION(CallInEditor)
+	void RemoveUnusedAssets();
+
+private:
+	TMap<UClass*, FString> PrefixMap;
 	
 };

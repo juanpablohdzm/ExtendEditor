@@ -1,5 +1,6 @@
 D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Inc\SuperManager\UHT\SuperManager.init.gen.cpp
 /I .
+/I Editor\Blutility\Private
 /I D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Source\SuperManager\Private
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\CoreUObject\UHT
 /I Runtime
@@ -276,6 +277,11 @@ D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\Unrea
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\Blutility\UHT
 /I Editor\Blutility\Classes
 /I Editor\Blutility\Public
+/I ..\Plugins\Editor\EditorScriptingUtilities\Intermediate\Build\Win64\UnrealEditor\Inc\EditorScriptingUtilities\UHT
+/I ..\Plugins\Editor\EditorScriptingUtilities\Source
+/I ..\Plugins\Editor\EditorScriptingUtilities\Source\EditorScriptingUtilities\Public
+/I ..\Intermediate\Build\Win64\UnrealEditor\Inc\StaticMeshEditor\UHT
+/I Editor\StaticMeshEditor\Public
 /external:W0
 /external:I ThirdParty\mimalloc\include
 /external:I ThirdParty\LibTiff\Source\Win64
