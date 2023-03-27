@@ -26,7 +26,14 @@
             "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowserdatamenucontexts.generated.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\contentbrowserdata\\uht\\contentbrowserdatalegacybridge.generated.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrufavoriteslist.h",
-            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrulist.h"
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\mrulist.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\plugins\\editor\\editorscriptingutilities\\source\\editorscriptingutilities\\public\\editorassetlibrary.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\plugins\\editor\\editorscriptingutilities\\intermediate\\build\\win64\\unrealeditor\\inc\\editorscriptingutilities\\uht\\editorassetlibrary.generated.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\blutility\\public\\editorutilitylibrary.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\engine\\classes\\kismet\\blueprintasyncactionbase.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\blueprintasyncactionbase.generated.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\blutility\\uht\\editorutilitylibrary.generated.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\objecttools.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

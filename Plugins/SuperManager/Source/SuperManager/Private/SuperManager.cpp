@@ -3,6 +3,9 @@
 #include "SuperManager.h"
 
 #include "ContentBrowserModule.h"
+#include "EditorAssetLibrary.h"
+#include "EditorUtilityLibrary.h"
+#include "ObjectTools.h"
 
 #define LOCTEXT_NAMESPACE "FSuperManagerModule"
 
@@ -34,6 +37,8 @@ TSharedRef<FExtender> FSuperManagerModule::CustomCBMenuExtender(const TArray<FSt
 	{
 		MenuExtender->AddMenuExtension(FName("Delete"), EExtensionHook::After,
 			TSharedPtr<FUICommandList>(),FMenuExtensionDelegate::CreateRaw(this,&FSuperManagerModule::AddCBMenuEntry));
+
+		FolderPathsSelected = SelectedPaths;
 	}
 	else
 	{
@@ -55,6 +60,30 @@ void FSuperManagerModule::AddCBMenuEntry(FMenuBuilder& MenuBuilder)
 
 void FSuperManagerModule::OnDeleteUnusedAssetsButtonClicked()
 {
+	if(FolderPathsSelected.Num() > 1)
+	{
+		UE_LOG(LogTemp, Error, TEXT("More than one path selected"));
+		return;
+	}
+	
+	const auto Assets =  UEditorAssetLibrary::ListAssets(FolderPathsSelected[0],true);
+	if(!Assets.Num()) return;
+
+	TArray<FAssetData> UnusedAssets;
+	for(const auto& Asset : Assets)
+	{
+		if(Asset.Contains(TEXT("Developers")) || Asset.Contains(TEXT("Collections"))) continue;
+		if(!UEditorAssetLibrary::DoesAssetExist(Asset)) continue;
+		
+		auto AssetReferences = UEditorAssetLibrary::FindPackageReferencersForAsset(Asset, true);
+		if(AssetReferences.Num() == 0)
+		{
+			UnusedAssets.Add(UEditorAssetLibrary::FindAssetData(Asset));
+		}
+	}
+
+	if(!UnusedAssets.Num()) return;
+	ObjectTools::DeleteAssets(UnusedAssets);
 }
 #pragma endregion 
 #undef LOCTEXT_NAMESPACE
