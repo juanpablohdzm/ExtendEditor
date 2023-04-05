@@ -14,6 +14,7 @@
 void FSuperManagerModule::StartupModule()
 {
 	InitCBMenuExtension();
+	RegisterAdvanceDeletionTab();
 }
 
 void FSuperManagerModule::ShutdownModule()
@@ -39,7 +40,7 @@ TSharedRef<FExtender> FSuperManagerModule::CustomCBMenuExtender(const TArray<FSt
 	{
 		MenuExtender->AddMenuExtension(FName("Delete"), EExtensionHook::After,
 			TSharedPtr<FUICommandList>(),FMenuExtensionDelegate::CreateRaw(this,&FSuperManagerModule::AddCBMenuEntry));
-
+		
 		FolderPathsSelected = SelectedPaths;
 	}
 	else
@@ -64,6 +65,17 @@ void FSuperManagerModule::AddCBMenuEntry(FMenuBuilder& MenuBuilder)
 	FSlateIcon(),
 	FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnDeleteEmptyFoldersButtonClicked)
 	);
+	MenuBuilder.AddMenuEntry(
+		FText::FromString(TEXT("Advance deletion ")),
+		FText::FromString(TEXT("Open advanced deletion tab")),
+		FSlateIcon(),
+		FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnOpenAdvanceDeletionTabButtonClicked)
+	);
+}
+
+void FSuperManagerModule::OnOpenAdvanceDeletionTabButtonClicked()
+{
+	FGlobalTabmanager::Get()->TryInvokeTab(FName(TEXT("AdvanceDeletion")));
 }
 
 void FSuperManagerModule::OnDeleteEmptyFoldersButtonClicked()
@@ -150,6 +162,21 @@ void FSuperManagerModule::FixUpRedirectors()
 	FAssetToolsModule& AssetToolsModule = FModuleManager::LoadModuleChecked<FAssetToolsModule>(TEXT("AssetTools"));
 	AssetToolsModule.Get().FixupReferencers(RedirectorsToFixArray);
 }
+#pragma endregion
+
+#pragma region CustomEditorTab
+
+void FSuperManagerModule::RegisterAdvanceDeletionTab()
+{
+	FGlobalTabmanager::Get()->RegisterNomadTabSpawner(FName(TEXT("AdvanceDeletion")),
+		FOnSpawnTab::CreateRaw(this, &FSuperManagerModule::OnSpawnAdvanceDeletionTab )).SetDisplayName(FText::FromString(TEXT("Advance Deletion")));
+}
+
+TSharedRef<SDockTab> FSuperManagerModule::OnSpawnAdvanceDeletionTab(const FSpawnTabArgs& SpawnTabArgs)
+{
+	return SNew(SDockTab).TabRole(NomadTab);
+}
+
 #pragma endregion 
 #undef LOCTEXT_NAMESPACE
 	
