@@ -7,8 +7,9 @@
         "Includes": [
             "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\intermediate\\build\\win64\\unrealeditor\\development\\supermanager\\definitions.supermanager.h",
             "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\supermanager.h",
-            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\contentbrowser\\public\\contentbrowsermodule.h",
-            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\contentbrowser\\public\\contentbrowserdelegates.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\developer\\assettools\\public\\assettoolsmodule.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\developer\\assettools\\public\\iassettools.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\developer\\assettools\\public\\assettypecategories.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\developer\\assettools\\public\\iassettypeactions.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\developer\\merge\\public\\merge.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\unrealed\\classes\\thumbnailrendering\\thumbnailmanager.h",
@@ -16,6 +17,11 @@
             "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\unrealed\\uht\\thumbnailrenderer.generated.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\unrealed\\uht\\thumbnailmanager.generated.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assettools\\uht\\iassettypeactions.generated.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\automatedassetimportdata.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\unrealed\\uht\\automatedassetimportdata.generated.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assettools\\uht\\iassettools.generated.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\contentbrowser\\public\\contentbrowsermodule.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\contentbrowser\\public\\contentbrowserdelegates.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowserdatalegacybridge.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowserdatamenucontexts.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\contentbrowserdata\\public\\contentbrowseritem.h",
@@ -33,7 +39,11 @@
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\engine\\classes\\kismet\\blueprintasyncactionbase.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\blueprintasyncactionbase.generated.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\blutility\\uht\\editorutilitylibrary.generated.h",
-            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\objecttools.h"
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\objecttools.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\assetregistrymodule.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\iassetregistry.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\coreuobject\\public\\misc\\assetregistryinterface.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assetregistry\\uht\\iassetregistry.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

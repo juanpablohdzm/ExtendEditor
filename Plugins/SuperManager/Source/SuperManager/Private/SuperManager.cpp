@@ -2,10 +2,12 @@
 
 #include "SuperManager.h"
 
+#include "AssetToolsModule.h"
 #include "ContentBrowserModule.h"
 #include "EditorAssetLibrary.h"
 #include "EditorUtilityLibrary.h"
 #include "ObjectTools.h"
+#include "AssetRegistry/AssetRegistryModule.h"
 
 #define LOCTEXT_NAMESPACE "FSuperManagerModule"
 
@@ -56,10 +58,47 @@ void FSuperManagerModule::AddCBMenuEntry(FMenuBuilder& MenuBuilder)
 		FSlateIcon(),
 		FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnDeleteUnusedAssetsButtonClicked)
 		);
+	MenuBuilder.AddMenuEntry(
+	FText::FromString(TEXT("Delete Empty Folders")),
+	FText::FromString(TEXT("Safely delete all empty folders in selected folder")),
+	FSlateIcon(),
+	FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnDeleteEmptyFoldersButtonClicked)
+	);
+}
+
+void FSuperManagerModule::OnDeleteEmptyFoldersButtonClicked()
+{
+	if(FolderPathsSelected.Num() > 1)
+	{
+		UE_LOG(LogTemp, Error, TEXT("More than one path selected"));
+		return;
+	}
+
+	const auto FolderPathsArray = UEditorAssetLibrary::ListAssets(FolderPathsSelected[0], true,true);
+	if(!FolderPathsArray.Num()) return;
+
+	TArray<FString> EmptyFoldersPathsArray;
+	for(const auto& FolderPath : FolderPathsArray)
+	{
+		if(FolderPath.Contains(TEXT("Developers")) || FolderPath.Contains(TEXT("Collections"))) continue;
+		if(!UEditorAssetLibrary::DoesDirectoryExist(FolderPath)) continue;
+
+		if(!UEditorAssetLibrary::DoesDirectoryHaveAssets(FolderPath))
+		{
+			EmptyFoldersPathsArray.Add(FolderPath);
+		}
+	}
+
+	for(const FString& EmptyFolderPath: EmptyFoldersPathsArray)
+	{
+		UEditorAssetLibrary::DeleteDirectory(EmptyFolderPath);
+	}
 }
 
 void FSuperManagerModule::OnDeleteUnusedAssetsButtonClicked()
 {
+	FixUpRedirectors();
+	
 	if(FolderPathsSelected.Num() > 1)
 	{
 		UE_LOG(LogTemp, Error, TEXT("More than one path selected"));
@@ -84,6 +123,32 @@ void FSuperManagerModule::OnDeleteUnusedAssetsButtonClicked()
 
 	if(!UnusedAssets.Num()) return;
 	ObjectTools::DeleteAssets(UnusedAssets);
+
+
+}
+
+void FSuperManagerModule::FixUpRedirectors()
+{
+	FARFilter Filter{};
+	Filter.bRecursiveClasses = true;
+	Filter.PackagePaths.Emplace("/Game");
+	Filter.ClassNames.Emplace("ObjectRedirector");
+	
+	FAssetRegistryModule& AssetRegistryModule = FModuleManager::Get().LoadModuleChecked<FAssetRegistryModule>(TEXT("AssetTools"));
+	TArray<FAssetData> OutRedirectors;
+	AssetRegistryModule.Get().GetAssets(Filter, OutRedirectors);
+
+	TArray<UObjectRedirector*> RedirectorsToFixArray;
+	RedirectorsToFixArray.Reserve(OutRedirectors.Num());
+	for(const auto& RedirectorData: OutRedirectors)
+	{
+		UObjectRedirector* Redirector = Cast<UObjectRedirector>(RedirectorData.GetAsset());
+		if(Redirector)
+			RedirectorsToFixArray.Add(Redirector);
+	}
+
+	FAssetToolsModule& AssetToolsModule = FModuleManager::LoadModuleChecked<FAssetToolsModule>(TEXT("AssetTools"));
+	AssetToolsModule.Get().FixupReferencers(RedirectorsToFixArray);
 }
 #pragma endregion 
 #undef LOCTEXT_NAMESPACE
