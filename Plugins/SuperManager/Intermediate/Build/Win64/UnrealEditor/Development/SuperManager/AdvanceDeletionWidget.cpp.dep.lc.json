@@ -6,7 +6,8 @@
         "PCH": "d:\\unrealengine\\extendeditor\\intermediate\\build\\win64\\extendeditoreditor\\development\\unrealed\\sharedpch.unrealed.shadowerrors.h.pch",
         "Includes": [
             "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\intermediate\\build\\win64\\unrealeditor\\development\\supermanager\\definitions.supermanager.h",
-            "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\slatewidgets\\advancedeletionwidget.h"
+            "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\slatewidgets\\advancedeletionwidget.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\slate\\public\\widgets\\layout\\sscrollbox.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

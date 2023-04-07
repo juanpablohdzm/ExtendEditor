@@ -49,3 +49,5 @@ Session.vim
 
 # Visual Studio
 .vs
+Plugins/SuperManager/Binaries/
+Plugins/Developer/RiderLink/
