@@ -8,6 +8,7 @@
 #include "EditorUtilityLibrary.h"
 #include "ObjectTools.h"
 #include "AssetRegistry/AssetRegistryModule.h"
+#include "SlateWidgets/AdvanceDeletionWidget.h"
 
 #define LOCTEXT_NAMESPACE "FSuperManagerModule"
 
@@ -174,7 +175,11 @@ void FSuperManagerModule::RegisterAdvanceDeletionTab()
 
 TSharedRef<SDockTab> FSuperManagerModule::OnSpawnAdvanceDeletionTab(const FSpawnTabArgs& SpawnTabArgs)
 {
-	return SNew(SDockTab).TabRole(NomadTab);
+	return SNew(SDockTab).TabRole(NomadTab)
+	[
+		SNew(SAdvanceDeletionTab)
+		.TestString(TEXT("I am passing data"))
+	];
 }
 
 #pragma endregion 
