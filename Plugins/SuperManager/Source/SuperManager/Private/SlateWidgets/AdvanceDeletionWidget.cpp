@@ -61,9 +61,10 @@ TSharedRef<ITableRow> SAdvanceDeletionTab::OnGenerateRowForList(TSharedPtr<FAsse
 {
 	if(!AssetDataToDisplay.IsValid()) return SNew(STableRow<TSharedPtr<FAssetData>>, OwnerTable);
 	const FString DisplayAssetName = AssetDataToDisplay->AssetName.ToString();
+	const FString DisplayAssetClassName = AssetDataToDisplay->AssetClassPath.ToString();
 	
 	
-	return SNew(STableRow<TSharedPtr<FAssetData>>, OwnerTable)
+	return SNew(STableRow<TSharedPtr<FAssetData>>, OwnerTable).Padding(FMargin(5.f))
 	[
 		SNew(SHorizontalBox)
 		+SHorizontalBox::Slot()
@@ -74,9 +75,21 @@ TSharedRef<ITableRow> SAdvanceDeletionTab::OnGenerateRowForList(TSharedPtr<FAsse
 			ConstructCheckbox(AssetDataToDisplay)
 		]
 		+SHorizontalBox::Slot()
+		.HAlign(HAlign_Center)
+		.VAlign(VAlign_Fill)
+		.FillWidth(0.2f)
 		[
-			SNew(STextBlock)
-			.Text(FText::FromString(DisplayAssetName))
+			ConstructTextForRowWidget(DisplayAssetClassName, FCoreStyle::Get().GetFontStyle("EmbossedText"))
+		]
+		+SHorizontalBox::Slot()
+		[
+			ConstructTextForRowWidget(DisplayAssetName, FCoreStyle::Get().GetFontStyle("EmbossedText"))
+		]
+		+SHorizontalBox::Slot()
+		.HAlign(HAlign_Right)
+		.VAlign(VAlign_Fill)
+		[
+			ConstructButtonForRowWidget(AssetDataToDisplay)
 		]
 	];
 }
@@ -87,6 +100,22 @@ TSharedRef<SCheckBox> SAdvanceDeletionTab::ConstructCheckbox(const TSharedPtr<FA
 	.Type(ESlateCheckBoxType::CheckBox)
 	.OnCheckStateChanged(this, &SAdvanceDeletionTab::OnCheckBoxStateChanged, AssetDataToDisplay)
 	.Visibility(EVisibility::Visible);
+}
+
+TSharedRef<STextBlock> SAdvanceDeletionTab::ConstructTextForRowWidget(const FString& TextContent,
+	const FSlateFontInfo& FontInfo)
+{
+	return SNew(STextBlock)
+	.Text(FText::FromString(TextContent))
+	.Font(FontInfo)
+	.ColorAndOpacity(FColor::White);
+}
+
+TSharedRef<SButton> SAdvanceDeletionTab::ConstructButtonForRowWidget(const TSharedPtr<FAssetData>& AssetData)
+{
+	return SNew(SButton)
+	.Text(FText::FromString(TEXT("Delete")))
+	.OnClicked(this, &SAdvanceDeletionTab::OnDeleteButtonClicked, AssetData);
 }
 
 void SAdvanceDeletionTab::OnCheckBoxStateChanged(ECheckBoxState NewState, TSharedPtr<FAssetData> AssetData)
@@ -101,4 +130,9 @@ void SAdvanceDeletionTab::OnCheckBoxStateChanged(ECheckBoxState NewState, TShare
 			break;
 		default: ;
 	}
+}
+
+FReply SAdvanceDeletionTab::OnDeleteButtonClicked(TSharedPtr<FAssetData> ClickedAssetData)
+{
+	return FReply::Handled();
 }
