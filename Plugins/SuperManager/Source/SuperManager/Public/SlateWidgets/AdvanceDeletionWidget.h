@@ -15,5 +15,8 @@ public:
 	void Construct(const FArguments& InArgs);
 
 private:
-	TArray<TSharedPtr<FAssetData>> AssetsDataUnderSelectedFolderList;
+	TArray<TSharedPtr<FAssetData>> StoredAssetsData;
+	TSharedRef<ITableRow> OnGenerateRowForList(TSharedPtr<FAssetData> AssetDataToDisplay, const TSharedRef<STableViewBase>& OwnerTable);
+	TSharedRef<SCheckBox> ConstructCheckbox(const TSharedPtr<FAssetData>& AssetDataToDisplay);
+	void OnCheckBoxStateChanged(ECheckBoxState NewState, TSharedPtr<FAssetData> AssetData);
 };

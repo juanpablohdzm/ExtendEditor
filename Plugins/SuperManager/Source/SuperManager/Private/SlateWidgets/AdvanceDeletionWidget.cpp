@@ -8,7 +8,7 @@
 void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 {
 	bCanSupportFocus = true;
-	AssetsDataUnderSelectedFolderList = InArgs._AssetsDataList;
+	StoredAssetsData = InArgs._AssetsDataList;
 
 	FSlateFontInfo TitleTextFont = FCoreStyle::Get().GetFontStyle(FName("EmbossedText"));
 	TitleTextFont.Size = 30;
@@ -31,12 +31,21 @@ void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 		.AutoHeight()
 		[
 			SNew(SHorizontalBox)
+			
 		]
 		//Third slot for the asset list
 		+SVerticalBox::Slot()
-		.AutoHeight()
+		.VAlign(VAlign_Fill)
 		[
 			SNew(SScrollBox)
+			+SScrollBox::Slot()
+			[
+				SNew(SListView<TSharedPtr<FAssetData>> )
+				.ItemHeight(24.f)
+				.ListItemsSource(&StoredAssetsData)
+				.OnGenerateRow(this, &SAdvanceDeletionTab::OnGenerateRowForList)
+				
+			]
 		]
 		//Fourth slot for the buttons
 		+SVerticalBox::Slot()
@@ -45,4 +54,51 @@ void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 			SNew(SHorizontalBox)
 		]
 	];
+}
+
+TSharedRef<ITableRow> SAdvanceDeletionTab::OnGenerateRowForList(TSharedPtr<FAssetData> AssetDataToDisplay,
+	const TSharedRef<STableViewBase>& OwnerTable)
+{
+	if(!AssetDataToDisplay.IsValid()) return SNew(STableRow<TSharedPtr<FAssetData>>, OwnerTable);
+	const FString DisplayAssetName = AssetDataToDisplay->AssetName.ToString();
+	
+	
+	return SNew(STableRow<TSharedPtr<FAssetData>>, OwnerTable)
+	[
+		SNew(SHorizontalBox)
+		+SHorizontalBox::Slot()
+		.HAlign(HAlign_Left)
+		.VAlign(VAlign_Center)
+		.FillWidth(0.05f)
+		[
+			ConstructCheckbox(AssetDataToDisplay)
+		]
+		+SHorizontalBox::Slot()
+		[
+			SNew(STextBlock)
+			.Text(FText::FromString(DisplayAssetName))
+		]
+	];
+}
+
+TSharedRef<SCheckBox> SAdvanceDeletionTab::ConstructCheckbox(const TSharedPtr<FAssetData>& AssetDataToDisplay)
+{
+	return SNew(SCheckBox)
+	.Type(ESlateCheckBoxType::CheckBox)
+	.OnCheckStateChanged(this, &SAdvanceDeletionTab::OnCheckBoxStateChanged, AssetDataToDisplay)
+	.Visibility(EVisibility::Visible);
+}
+
+void SAdvanceDeletionTab::OnCheckBoxStateChanged(ECheckBoxState NewState, TSharedPtr<FAssetData> AssetData)
+{
+	switch (NewState)
+	{
+		case ECheckBoxState::Unchecked:
+			break;
+		case ECheckBoxState::Checked:
+			break;
+		case ECheckBoxState::Undetermined:
+			break;
+		default: ;
+	}
 }
