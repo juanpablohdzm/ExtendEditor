@@ -8,6 +8,8 @@
 #include "EditorUtilityLibrary.h"
 #include "ObjectTools.h"
 #include "AssetRegistry/AssetRegistryModule.h"
+#include "Chaos/AABB.h"
+#include "Chaos/AABB.h"
 #include "SlateWidgets/AdvanceDeletionWidget.h"
 
 #define LOCTEXT_NAMESPACE "FSuperManagerModule"
@@ -205,7 +207,21 @@ TArray<TSharedPtr<FAssetData>> FSuperManagerModule::GetAssetsDataUnderSelectedFo
 	return AvailableAssetsData;
 }
 
-#pragma endregion 
+
+#pragma endregion
+
+#pragma region ProccessDataForAdvanceDeletionTab
+
+bool FSuperManagerModule::DeleteSingleAssetForAssetList(const FAssetData& AssetData)
+{
+	return ObjectTools::DeleteAssets({AssetData},true) != 0;
+}
+
+int32 FSuperManagerModule::DeleteAssetsForAssetList(const TArray<FAssetData>& AssetDataList)
+{
+	return ObjectTools::DeleteAssets(AssetDataList, true);
+}
+#pragma endregion ProccessDataForAdvanceDeletionTab
 #undef LOCTEXT_NAMESPACE
 	
 IMPLEMENT_MODULE(FSuperManagerModule, SuperManager)

@@ -40,5 +40,13 @@ public:
 	TSharedRef<SDockTab> OnSpawnAdvanceDeletionTab(const FSpawnTabArgs& SpawnTabArgs);
 	TArray<TSharedPtr<FAssetData>> GetAssetsDataUnderSelectedFolder();
 	
-#pragma endregion 
+#pragma endregion
+
+
+public:
+#pragma region ProccessDataForAdvanceDeletionTab
+
+	bool DeleteSingleAssetForAssetList(const FAssetData& AssetData);
+	int32 DeleteAssetsForAssetList(const TArray<FAssetData>& AssetDataList);
+#pragma endregion ProccessDataForAdvanceDeletionTab
 };
