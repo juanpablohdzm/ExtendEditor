@@ -6,13 +6,16 @@
 #include "Widgets/Layout/SScrollBox.h"
 
 #define ListAll TEXT("List All Available Assets")
+#define ListUnused TEXT("List Unused Assets")
 
 void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 {
 	bCanSupportFocus = true;
 	StoredAssetsData = InArgs._AssetsDataList;
+	DisplayAssetData = StoredAssetsData;
 
 	ComboBoxSourceItems.Add(MakeShared<FString>(ListAll));
+	ComboBoxSourceItems.Add(MakeShared<FString>(ListUnused));
 
 	FSlateFontInfo TitleTextFont = FCoreStyle::Get().GetFontStyle(FName("EmbossedText"));
 	TitleTextFont.Size = 30;
@@ -90,7 +93,7 @@ TSharedRef<SListView<TSharedPtr<FAssetData>>> SAdvanceDeletionTab::ConstructAsse
 {
 	ConstructedAssetListView =  SNew(SListView<TSharedPtr<FAssetData>> )
 				.ItemHeight(24.f)
-				.ListItemsSource(&StoredAssetsData)
+				.ListItemsSource(&DisplayAssetData)
 				.OnGenerateRow(this, &SAdvanceDeletionTab::OnGenerateRowForList);
 
 	return ConstructedAssetListView.ToSharedRef();
@@ -181,18 +184,21 @@ TSharedRef<SWidget> SAdvanceDeletionTab::OnGenerateComboBoxItem(TSharedPtr<FStri
 void SAdvanceDeletionTab::OnComboBoxSelectionChanged(TSharedPtr<FString> SelectedOption, ESelectInfo::Type InSelectInfo)
 {
 	ComboDisplayTextBlock->SetText(FText::FromString(*SelectedOption));
-	switch (InSelectInfo)
+
+	FSuperManagerModule& SuperManagerModule = FModuleManager::LoadModuleChecked<FSuperManagerModule>(FName(TEXT("SuperManager")));
+
+	if(*SelectedOption == ListAll)
 	{
-		case ESelectInfo::OnKeyPress:
-			break;
-		case ESelectInfo::OnNavigation:
-			break;
-		case ESelectInfo::OnMouseClick:
-			break;
-		case ESelectInfo::Direct:
-			break;
-		default: ;
+		return;
 	}
+
+	if(*SelectedOption == ListUnused)
+	{
+		SuperManagerModule.ListUnusedAssetsForAssetList(StoredAssetsData, DisplayAssetData);
+		RefreshAssetListView();
+		return;
+	}
+	
 }
 
 void SAdvanceDeletionTab::OnCheckBoxStateChanged(ECheckBoxState NewState, TSharedPtr<FAssetData> AssetData)

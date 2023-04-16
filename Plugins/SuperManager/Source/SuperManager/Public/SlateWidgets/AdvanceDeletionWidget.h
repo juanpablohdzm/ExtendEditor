@@ -49,6 +49,7 @@ private:
 	TArray<TSharedRef<SCheckBox>> ConstructedCheckBoxes;
 	TArray<TSharedPtr<FAssetData>> CheckedAssetsData;
 	TArray<TSharedPtr<FAssetData>> StoredAssetsData;
+	TArray<TSharedPtr<FAssetData>> DisplayAssetData;
 	TArray<TSharedPtr<FString>> ComboBoxSourceItems;
 
 };

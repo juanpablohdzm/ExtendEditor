@@ -221,6 +221,20 @@ int32 FSuperManagerModule::DeleteAssetsForAssetList(const TArray<FAssetData>& As
 {
 	return ObjectTools::DeleteAssets(AssetDataList, true);
 }
+
+void FSuperManagerModule::ListUnusedAssetsForAssetList(const TArray<TSharedPtr<FAssetData>>& AssetsDataToFilter,
+	TArray<TSharedPtr<FAssetData>>& OutUnusedAssetData)
+{
+	OutUnusedAssetData.Empty();
+	for(const TSharedPtr<FAssetData>& DataSharedPtr : AssetsDataToFilter)
+	{
+		TArray<FString> AssetReferences = UEditorAssetLibrary::FindPackageReferencersForAsset(DataSharedPtr->ObjectPath.ToString());
+		if(AssetReferences.Num() == 0)
+		{
+			OutUnusedAssetData.Add(DataSharedPtr);
+		}
+	}
+}
 #pragma endregion ProccessDataForAdvanceDeletionTab
 #undef LOCTEXT_NAMESPACE
 	
