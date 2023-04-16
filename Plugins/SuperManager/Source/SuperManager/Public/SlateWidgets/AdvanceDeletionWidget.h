@@ -26,6 +26,10 @@ private:
 	TSharedRef<STextBlock> ConstructTextForRowWidget(const FString& TextContent, const FSlateFontInfo& FontInfo);
 	TSharedRef<SButton> ConstructButtonForRowWidget(const TSharedPtr<FAssetData>& AssetData);
 #pragma region ConstructAssetListView
+	TSharedRef<SComboBox<TSharedPtr<FString>>> ConstructComboBox();
+	TSharedRef<SWidget> OnGenerateComboBoxItem(TSharedPtr<FString> SourceItem);
+	void OnComboBoxSelectionChanged(TSharedPtr<FString> SelectedOption, ESelectInfo::Type InSelectInfo);
+	TSharedPtr<STextBlock> ComboDisplayTextBlock;
 	
 #pragma endregion WidgetConstructor
 
@@ -45,5 +49,6 @@ private:
 	TArray<TSharedRef<SCheckBox>> ConstructedCheckBoxes;
 	TArray<TSharedPtr<FAssetData>> CheckedAssetsData;
 	TArray<TSharedPtr<FAssetData>> StoredAssetsData;
+	TArray<TSharedPtr<FString>> ComboBoxSourceItems;
 
 };

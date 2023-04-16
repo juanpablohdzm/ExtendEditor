@@ -5,10 +5,14 @@
 #include "SuperManager.h"
 #include "Widgets/Layout/SScrollBox.h"
 
+#define ListAll TEXT("List All Available Assets")
+
 void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 {
 	bCanSupportFocus = true;
 	StoredAssetsData = InArgs._AssetsDataList;
+
+	ComboBoxSourceItems.Add(MakeShared<FString>(ListAll));
 
 	FSlateFontInfo TitleTextFont = FCoreStyle::Get().GetFontStyle(FName("EmbossedText"));
 	TitleTextFont.Size = 30;
@@ -31,6 +35,11 @@ void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 		.AutoHeight()
 		[
 			SNew(SHorizontalBox)
+			+SHorizontalBox::Slot()
+			.AutoWidth()
+			[
+				ConstructComboBox()
+			]
 			
 		]
 		//Third slot for the asset list
@@ -153,6 +162,39 @@ TSharedRef<SButton> SAdvanceDeletionTab::ConstructButtonForRowWidget(const TShar
 	.OnClicked(this, &SAdvanceDeletionTab::OnDeleteButtonClicked, AssetData);
 }
 
+TSharedRef<SComboBox<TSharedPtr<FString>>> SAdvanceDeletionTab::ConstructComboBox()
+{
+	return SNew(SComboBox<TSharedPtr<FString>>)
+	.OptionsSource(&ComboBoxSourceItems)
+	.OnGenerateWidget(this, &SAdvanceDeletionTab::OnGenerateComboBoxItem)
+	.OnSelectionChanged(this, &SAdvanceDeletionTab::OnComboBoxSelectionChanged)
+	[
+		SAssignNew(ComboDisplayTextBlock, STextBlock).Text(FText::FromString(TEXT("List Assets Option")))
+	];
+}
+
+TSharedRef<SWidget> SAdvanceDeletionTab::OnGenerateComboBoxItem(TSharedPtr<FString> SourceItem)
+{
+	return SNew(STextBlock).Text(FText::FromString(*SourceItem));
+}
+
+void SAdvanceDeletionTab::OnComboBoxSelectionChanged(TSharedPtr<FString> SelectedOption, ESelectInfo::Type InSelectInfo)
+{
+	ComboDisplayTextBlock->SetText(FText::FromString(*SelectedOption));
+	switch (InSelectInfo)
+	{
+		case ESelectInfo::OnKeyPress:
+			break;
+		case ESelectInfo::OnNavigation:
+			break;
+		case ESelectInfo::OnMouseClick:
+			break;
+		case ESelectInfo::Direct:
+			break;
+		default: ;
+	}
+}
+
 void SAdvanceDeletionTab::OnCheckBoxStateChanged(ECheckBoxState NewState, TSharedPtr<FAssetData> AssetData)
 {
 	switch (NewState)
@@ -208,7 +250,8 @@ FReply SAdvanceDeletionTab::OnSelectAllButtonClicked()
 {
 	for (const TSharedRef<SCheckBox> CheckBox : ConstructedCheckBoxes)
 	{
-		CheckBox->SetIsChecked(ECheckBoxState::Checked);
+		if(!CheckBox->IsChecked())
+			CheckBox->ToggleCheckedState();
 	}
 
 	return FReply::Handled();
@@ -218,7 +261,8 @@ FReply SAdvanceDeletionTab::OnDeselectAllButtonClicked()
 {
 	for (const TSharedRef<SCheckBox> CheckBox : ConstructedCheckBoxes)
 	{
-		CheckBox->SetIsChecked(ECheckBoxState::Unchecked);
+		if(CheckBox->IsChecked())
+			CheckBox->ToggleCheckedState();
 	}
 	return FReply::Handled();
 }
