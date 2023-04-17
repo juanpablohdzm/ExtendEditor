@@ -7,6 +7,7 @@
 
 #define ListAll TEXT("List All Available Assets")
 #define ListUnused TEXT("List Unused Assets")
+#define ListSameName TEXT("List Assets With Same Name")
 
 void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 {
@@ -16,6 +17,7 @@ void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 
 	ComboBoxSourceItems.Add(MakeShared<FString>(ListAll));
 	ComboBoxSourceItems.Add(MakeShared<FString>(ListUnused));
+	ComboBoxSourceItems.Add(MakeShared<FString>(ListSameName));
 
 	FSlateFontInfo TitleTextFont = FCoreStyle::Get().GetFontStyle(FName("EmbossedText"));
 	TitleTextFont.Size = 30;
@@ -189,15 +191,20 @@ void SAdvanceDeletionTab::OnComboBoxSelectionChanged(TSharedPtr<FString> Selecte
 
 	if(*SelectedOption == ListAll)
 	{
-		return;
+		DisplayAssetData = StoredAssetsData;
+		RefreshAssetListView();
 	}
-
 	if(*SelectedOption == ListUnused)
 	{
 		SuperManagerModule.ListUnusedAssetsForAssetList(StoredAssetsData, DisplayAssetData);
-		RefreshAssetListView();
-		return;
 	}
+	
+	if(*SelectedOption == ListSameName)
+	{
+		SuperManagerModule.ListSameNameAssetsForAssetList(StoredAssetsData, DisplayAssetData);
+	}
+	
+	RefreshAssetListView();
 	
 }
 
@@ -228,8 +235,13 @@ FReply SAdvanceDeletionTab::OnDeleteButtonClicked(TSharedPtr<FAssetData> Clicked
 		if(StoredAssetsData.Contains(ClickedAssetData))
 		{
 			StoredAssetsData.Remove(ClickedAssetData);
-			RefreshAssetListView();
 		}
+
+		if(DisplayAssetData.Contains(ClickedAssetData))
+		{
+			DisplayAssetData.Remove(ClickedAssetData);
+		}
+		RefreshAssetListView();
 		
 	}
 	return FReply::Handled();

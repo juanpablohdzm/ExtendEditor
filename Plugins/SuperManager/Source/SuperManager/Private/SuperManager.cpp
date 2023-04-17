@@ -78,6 +78,7 @@ void FSuperManagerModule::AddCBMenuEntry(FMenuBuilder& MenuBuilder)
 
 void FSuperManagerModule::OnOpenAdvanceDeletionTabButtonClicked()
 {
+	FixUpRedirectors();
 	FGlobalTabmanager::Get()->TryInvokeTab(FName(TEXT("AdvanceDeletion")));
 }
 
@@ -232,6 +233,28 @@ void FSuperManagerModule::ListUnusedAssetsForAssetList(const TArray<TSharedPtr<F
 		if(AssetReferences.Num() == 0)
 		{
 			OutUnusedAssetData.Add(DataSharedPtr);
+		}
+	}
+}
+
+void FSuperManagerModule::ListSameNameAssetsForAssetList(const TArray<TSharedPtr<FAssetData>>& AssetsDataToFilter,
+	TArray<TSharedPtr<FAssetData>>& OutSameNameAssetsData)
+{
+	OutSameNameAssetsData.Empty();
+	TMultiMap<FName, TSharedPtr<FAssetData>> AssetsInfoMultiMap;
+	for(const TSharedPtr<FAssetData>& DataSharedPtr : AssetsDataToFilter)
+	{
+		AssetsInfoMultiMap.Emplace(DataSharedPtr->AssetName, DataSharedPtr);
+	}
+
+	for(const TSharedPtr<FAssetData>& DataSharedPtr : AssetsDataToFilter)
+	{
+		TArray<TSharedPtr<FAssetData>> OutAssetsData;
+		AssetsInfoMultiMap.MultiFind(DataSharedPtr->AssetName, OutAssetsData);
+
+		if(OutAssetsData.Num() > 1)
+		{
+			OutSameNameAssetsData.Append(OutAssetsData);
 		}
 	}
 }
