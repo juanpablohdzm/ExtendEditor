@@ -29,6 +29,7 @@ private:
 	TSharedRef<SComboBox<TSharedPtr<FString>>> ConstructComboBox();
 	TSharedRef<SWidget> OnGenerateComboBoxItem(TSharedPtr<FString> SourceItem);
 	void OnComboBoxSelectionChanged(TSharedPtr<FString> SelectedOption, ESelectInfo::Type InSelectInfo);
+	void OnMouseButtonClickForList(TSharedPtr<FAssetData, ESPMode::ThreadSafe> AssetData);
 	TSharedPtr<STextBlock> ComboDisplayTextBlock;
 	
 #pragma endregion WidgetConstructor

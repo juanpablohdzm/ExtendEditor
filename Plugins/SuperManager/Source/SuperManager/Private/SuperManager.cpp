@@ -254,9 +254,18 @@ void FSuperManagerModule::ListSameNameAssetsForAssetList(const TArray<TSharedPtr
 
 		if(OutAssetsData.Num() > 1)
 		{
-			OutSameNameAssetsData.Append(OutAssetsData);
+			for(const TSharedPtr<FAssetData>& AssetData : OutAssetsData)
+			{
+				OutSameNameAssetsData.AddUnique(AssetData);
+			}
 		}
 	}
+}
+
+void FSuperManagerModule::SyncCBToClickedAssetForAssetList(const FString& AssetPathToSync)
+{
+	TArray<FString> Paths{AssetPathToSync};
+	UEditorAssetLibrary::SyncBrowserToObjects(Paths);
 }
 #pragma endregion ProccessDataForAdvanceDeletionTab
 #undef LOCTEXT_NAMESPACE

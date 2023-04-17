@@ -50,6 +50,6 @@ public:
 	int32 DeleteAssetsForAssetList(const TArray<FAssetData>& AssetDataList);
 	void ListUnusedAssetsForAssetList( const TArray<TSharedPtr<FAssetData>>& AssetsDataToFilter, TArray<TSharedPtr<FAssetData>>& OutUnusedAssetData);
 	void ListSameNameAssetsForAssetList( const TArray<TSharedPtr<FAssetData>>&AssetsDataToFilter, TArray<TSharedPtr<FAssetData>>& OutSameNameAssetsData);
-	
+	void SyncCBToClickedAssetForAssetList(const FString& AssetPathToSync);
 	#pragma endregion ProccessDataForAdvanceDeletionTab
 };

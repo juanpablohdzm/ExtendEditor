@@ -14,6 +14,7 @@ void SAdvanceDeletionTab::Construct(const FArguments& InArgs)
 	bCanSupportFocus = true;
 	StoredAssetsData = InArgs._AssetsDataList;
 	DisplayAssetData = StoredAssetsData;
+	ComboBoxSourceItems.Empty();
 
 	ComboBoxSourceItems.Add(MakeShared<FString>(ListAll));
 	ComboBoxSourceItems.Add(MakeShared<FString>(ListUnused));
@@ -96,7 +97,8 @@ TSharedRef<SListView<TSharedPtr<FAssetData>>> SAdvanceDeletionTab::ConstructAsse
 	ConstructedAssetListView =  SNew(SListView<TSharedPtr<FAssetData>> )
 				.ItemHeight(24.f)
 				.ListItemsSource(&DisplayAssetData)
-				.OnGenerateRow(this, &SAdvanceDeletionTab::OnGenerateRowForList);
+				.OnGenerateRow(this, &SAdvanceDeletionTab::OnGenerateRowForList)
+	.OnMouseButtonClick(this, &SAdvanceDeletionTab::OnMouseButtonClickForList);
 
 	return ConstructedAssetListView.ToSharedRef();
 
@@ -206,6 +208,12 @@ void SAdvanceDeletionTab::OnComboBoxSelectionChanged(TSharedPtr<FString> Selecte
 	
 	RefreshAssetListView();
 	
+}
+
+void SAdvanceDeletionTab::OnMouseButtonClickForList(TSharedPtr<FAssetData, ESPMode::ThreadSafe> AssetData)
+{
+	FSuperManagerModule& SuperManagerModule = FModuleManager::LoadModuleChecked<FSuperManagerModule>(FName(TEXT("SuperManager")));
+	SuperManagerModule.SyncCBToClickedAssetForAssetList(AssetData->GetObjectPathString());
 }
 
 void SAdvanceDeletionTab::OnCheckBoxStateChanged(ECheckBoxState NewState, TSharedPtr<FAssetData> AssetData)
