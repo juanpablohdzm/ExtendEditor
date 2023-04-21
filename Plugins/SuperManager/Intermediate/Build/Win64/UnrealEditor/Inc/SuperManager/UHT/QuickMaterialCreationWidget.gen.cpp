@@ -72,6 +72,31 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_MaterialName_MetaData[];
 #endif
 		static const UECodeGen_Private::FStrPropertyParams NewProp_MaterialName;
+		static const UECodeGen_Private::FStrPropertyParams NewProp_BaseColorArray_Inner;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_BaseColorArray_MetaData[];
+#endif
+		static const UECodeGen_Private::FArrayPropertyParams NewProp_BaseColorArray;
+		static const UECodeGen_Private::FStrPropertyParams NewProp_MetallicArray_Inner;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_MetallicArray_MetaData[];
+#endif
+		static const UECodeGen_Private::FArrayPropertyParams NewProp_MetallicArray;
+		static const UECodeGen_Private::FStrPropertyParams NewProp_RoughnessArray_Inner;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RoughnessArray_MetaData[];
+#endif
+		static const UECodeGen_Private::FArrayPropertyParams NewProp_RoughnessArray;
+		static const UECodeGen_Private::FStrPropertyParams NewProp_NormalArray_Inner;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_NormalArray_MetaData[];
+#endif
+		static const UECodeGen_Private::FArrayPropertyParams NewProp_NormalArray;
+		static const UECodeGen_Private::FStrPropertyParams NewProp_AmbientOcclusionArray_Inner;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_AmbientOcclusionArray_MetaData[];
+#endif
+		static const UECodeGen_Private::FArrayPropertyParams NewProp_AmbientOcclusionArray;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -109,9 +134,59 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 	};
 #endif
 	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MaterialName = { "MaterialName", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, MaterialName), METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MaterialName_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MaterialName_MetaData)) };
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray_Inner = { "BaseColorArray", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, 0, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray_MetaData[] = {
+		{ "Category", "Supported Texture Names" },
+		{ "ModuleRelativePath", "Public/AssetActions/QuickMaterialCreationWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray = { "BaseColorArray", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, BaseColorArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray_MetaData)) };
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MetallicArray_Inner = { "MetallicArray", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, 0, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MetallicArray_MetaData[] = {
+		{ "Category", "Supported Texture Names" },
+		{ "ModuleRelativePath", "Public/AssetActions/QuickMaterialCreationWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MetallicArray = { "MetallicArray", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, MetallicArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MetallicArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MetallicArray_MetaData)) };
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_RoughnessArray_Inner = { "RoughnessArray", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, 0, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_RoughnessArray_MetaData[] = {
+		{ "Category", "Supported Texture Names" },
+		{ "ModuleRelativePath", "Public/AssetActions/QuickMaterialCreationWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_RoughnessArray = { "RoughnessArray", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, RoughnessArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_RoughnessArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_RoughnessArray_MetaData)) };
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_NormalArray_Inner = { "NormalArray", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, 0, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_NormalArray_MetaData[] = {
+		{ "Category", "Supported Texture Names" },
+		{ "ModuleRelativePath", "Public/AssetActions/QuickMaterialCreationWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_NormalArray = { "NormalArray", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, NormalArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_NormalArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_NormalArray_MetaData)) };
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray_Inner = { "AmbientOcclusionArray", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, 0, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray_MetaData[] = {
+		{ "Category", "Supported Texture Names" },
+		{ "ModuleRelativePath", "Public/AssetActions/QuickMaterialCreationWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray = { "AmbientOcclusionArray", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, AmbientOcclusionArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_bCustomMaterialName,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MaterialName,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray_Inner,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MetallicArray_Inner,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MetallicArray,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_RoughnessArray_Inner,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_RoughnessArray,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_NormalArray_Inner,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_NormalArray,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray_Inner,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UQuickMaterialCreationWidget>::IsAbstract,
@@ -150,9 +225,9 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UQuickMaterialCreationWidget, UQuickMaterialCreationWidget::StaticClass, TEXT("UQuickMaterialCreationWidget"), &Z_Registration_Info_UClass_UQuickMaterialCreationWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuickMaterialCreationWidget), 219753866U) },
+		{ Z_Construct_UClass_UQuickMaterialCreationWidget, UQuickMaterialCreationWidget::StaticClass, TEXT("UQuickMaterialCreationWidget"), &Z_Registration_Info_UClass_UQuickMaterialCreationWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuickMaterialCreationWidget), 3211918662U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_2587815092(TEXT("/Script/SuperManager"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_3632618044(TEXT("/Script/SuperManager"),
 		Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
