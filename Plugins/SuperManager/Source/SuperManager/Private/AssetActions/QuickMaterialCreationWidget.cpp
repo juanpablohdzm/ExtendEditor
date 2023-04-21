@@ -44,6 +44,11 @@ void UQuickMaterialCreationWidget::CreateMaterialFromSelectedTextures()
 
 		CreateMaterialNodes(CreatedMaterial, SelectedTexture, PinsConnectedCounter);
 	}
+
+	if(PinsConnectedCounter > 0)
+	{
+		ShowNotifyInfo(TEXT("Successfully connected"));
+	}
 }
 
 bool UQuickMaterialCreationWidget::ProcessSelectedData(const TArray<FAssetData>& SelectedDataToProcess,
@@ -171,6 +176,7 @@ bool UQuickMaterialCreationWidget::TryConnectMettalic(UMaterialExpressionTexture
 			TextureSampleNode->Texture = SelectedTexture;
 			TextureSampleNode->SamplerType = EMaterialSamplerType::SAMPLERTYPE_LinearColor;
 			TextureSampleNode->MaterialExpressionEditorX -= 600.0f;
+			TextureSampleNode->MaterialExpressionEditorY += 240.0f;
 			
 			CreatedMaterial->GetExpressionCollection().AddExpression(TextureSampleNode);
 			CreatedMaterial->GetExpressionInputForProperty(MP_Metallic)->Connect(0, TextureSampleNode);
