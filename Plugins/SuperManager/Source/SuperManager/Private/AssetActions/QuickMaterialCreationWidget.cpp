@@ -141,6 +141,30 @@ void UQuickMaterialCreationWidget::CreateMaterialNodes(UMaterial* CreatedMateria
 				return;
 			}
 		}
+		if(!CreatedMaterial->HasRoughnessConnected())
+		{
+			if(TryConnectMettalic(TextureSampleNode, SelectedTexture, CreatedMaterial))
+			{
+				PinConnectedCounter++;
+				return;
+			}
+		}
+		if(!CreatedMaterial->HasAmbientOcclusionConnected())
+		{
+			if(TryConnectAO(TextureSampleNode, SelectedTexture, CreatedMaterial))
+			{
+				PinConnectedCounter++;
+				return;
+			}
+		}
+		if(!CreatedMaterial->HasNormalConnected())
+		{
+			if(TryConnectNormal(TextureSampleNode, SelectedTexture, CreatedMaterial))
+			{
+				PinConnectedCounter++;
+				return;
+			}
+		}
 	}
 }
 
@@ -182,6 +206,75 @@ bool UQuickMaterialCreationWidget::TryConnectMettalic(UMaterialExpressionTexture
 			CreatedMaterial->GetExpressionInputForProperty(MP_Metallic)->Connect(0, TextureSampleNode);
 			CreatedMaterial->PostEditChange();
 			
+			return true;
+		}
+	}
+	return false;
+}
+
+bool UQuickMaterialCreationWidget::TryConnectRoughness(UMaterialExpressionTextureSample* TextureSampleNode,
+	UTexture2D* SelectedTexture, UMaterial* CreatedMaterial)
+{
+	for(const FString& Roughness : RoughnessArray)
+	{
+		if(SelectedTexture->GetName().Contains(Roughness))
+		{
+			SelectedTexture->CompressionSettings = TextureCompressionSettings::TC_Default;
+			SelectedTexture->PostEditChange();
+
+			TextureSampleNode->Texture = SelectedTexture;
+			TextureSampleNode->SamplerType = EMaterialSamplerType::SAMPLERTYPE_LinearColor;
+			TextureSampleNode->MaterialExpressionEditorX -= 600.0f;
+			TextureSampleNode->MaterialExpressionEditorY += 2*240.0f;
+
+			CreatedMaterial->GetExpressionCollection().AddExpression(TextureSampleNode);
+			CreatedMaterial->GetExpressionInputForProperty(MP_Roughness)->Connect(0, TextureSampleNode);
+			CreatedMaterial->PostEditChange();
+			return true;
+		}
+	}
+	return false;
+}
+
+bool UQuickMaterialCreationWidget::TryConnectAO(UMaterialExpressionTextureSample* TextureSampleNode,
+	UTexture2D* SelectedTexture, UMaterial* CreatedMaterial)
+{
+	for(const FString& AO : AmbientOcclusionArray)
+	{
+		if(SelectedTexture->GetName().Contains(AO))
+		{
+			SelectedTexture->CompressionSettings = TextureCompressionSettings::TC_Default;
+			SelectedTexture->PostEditChange();
+
+			TextureSampleNode->Texture = SelectedTexture;
+			TextureSampleNode->SamplerType = EMaterialSamplerType::SAMPLERTYPE_Color;
+			TextureSampleNode->MaterialExpressionEditorX -= 600.0f;
+			TextureSampleNode->MaterialExpressionEditorY += 3*240.0f;
+
+			CreatedMaterial->GetExpressionCollection().AddExpression(TextureSampleNode);
+			CreatedMaterial->GetExpressionInputForProperty(MP_AmbientOcclusion)->Connect(0, TextureSampleNode);
+			CreatedMaterial->PostEditChange();
+			return true;
+		}
+	}
+	return false;
+}
+
+bool UQuickMaterialCreationWidget::TryConnectNormal(UMaterialExpressionTextureSample* TextureSampleNode,
+	UTexture2D* SelectedTexture, UMaterial* CreatedMaterial)
+{
+	for(const FString& Normal : NormalArray)
+	{
+		if(SelectedTexture->GetName().Contains(Normal))
+		{
+			TextureSampleNode->Texture = SelectedTexture;
+			TextureSampleNode->SamplerType = EMaterialSamplerType::SAMPLERTYPE_Normal;
+			TextureSampleNode->MaterialExpressionEditorX -= 600.0f;
+			TextureSampleNode->MaterialExpressionEditorY += 4*240.0f;
+
+			CreatedMaterial->GetExpressionCollection().AddExpression(TextureSampleNode);
+			CreatedMaterial->GetExpressionInputForProperty(MP_Normal)->Connect(0, TextureSampleNode);
+			CreatedMaterial->PostEditChange();
 			return true;
 		}
 	}
