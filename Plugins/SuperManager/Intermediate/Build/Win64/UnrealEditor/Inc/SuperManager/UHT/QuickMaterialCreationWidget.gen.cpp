@@ -12,8 +12,71 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 	BLUTILITY_API UClass* Z_Construct_UClass_UEditorUtilityWidget();
 	SUPERMANAGER_API UClass* Z_Construct_UClass_UQuickMaterialCreationWidget();
 	SUPERMANAGER_API UClass* Z_Construct_UClass_UQuickMaterialCreationWidget_NoRegister();
+	SUPERMANAGER_API UEnum* Z_Construct_UEnum_SuperManager_E_ChannelPackingType();
 	UPackage* Z_Construct_UPackage__Script_SuperManager();
 // End Cross Module References
+	static FEnumRegistrationInfo Z_Registration_Info_UEnum_E_ChannelPackingType;
+	static UEnum* E_ChannelPackingType_StaticEnum()
+	{
+		if (!Z_Registration_Info_UEnum_E_ChannelPackingType.OuterSingleton)
+		{
+			Z_Registration_Info_UEnum_E_ChannelPackingType.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_SuperManager_E_ChannelPackingType, Z_Construct_UPackage__Script_SuperManager(), TEXT("E_ChannelPackingType"));
+		}
+		return Z_Registration_Info_UEnum_E_ChannelPackingType.OuterSingleton;
+	}
+	template<> SUPERMANAGER_API UEnum* StaticEnum<E_ChannelPackingType>()
+	{
+		return E_ChannelPackingType_StaticEnum();
+	}
+	struct Z_Construct_UEnum_SuperManager_E_ChannelPackingType_Statics
+	{
+		static const UECodeGen_Private::FEnumeratorParam Enumerators[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FEnumParams EnumParams;
+	};
+	const UECodeGen_Private::FEnumeratorParam Z_Construct_UEnum_SuperManager_E_ChannelPackingType_Statics::Enumerators[] = {
+		{ "E_ChannelPackingType::ECPT_NoChannelPacking", (int64)E_ChannelPackingType::ECPT_NoChannelPacking },
+		{ "E_ChannelPackingType::ECPT_ORM", (int64)E_ChannelPackingType::ECPT_ORM },
+		{ "E_ChannelPackingType::ECPT_MAX", (int64)E_ChannelPackingType::ECPT_MAX },
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UEnum_SuperManager_E_ChannelPackingType_Statics::Enum_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "Comment", "/**\n * \n */" },
+		{ "ECPT_MAX.Comment", "/**\n * \n */" },
+		{ "ECPT_MAX.DisplayName", "DefaultMax" },
+		{ "ECPT_MAX.Name", "E_ChannelPackingType::ECPT_MAX" },
+		{ "ECPT_NoChannelPacking.Comment", "/**\n * \n */" },
+		{ "ECPT_NoChannelPacking.DisplayName", "No Channel Packing" },
+		{ "ECPT_NoChannelPacking.Name", "E_ChannelPackingType::ECPT_NoChannelPacking" },
+		{ "ECPT_ORM.Comment", "/**\n * \n */" },
+		{ "ECPT_ORM.DisplayName", "OcclusionRoughnessMetallic" },
+		{ "ECPT_ORM.Name", "E_ChannelPackingType::ECPT_ORM" },
+		{ "ModuleRelativePath", "Public/AssetActions/QuickMaterialCreationWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FEnumParams Z_Construct_UEnum_SuperManager_E_ChannelPackingType_Statics::EnumParams = {
+		(UObject*(*)())Z_Construct_UPackage__Script_SuperManager,
+		nullptr,
+		"E_ChannelPackingType",
+		"E_ChannelPackingType",
+		Z_Construct_UEnum_SuperManager_E_ChannelPackingType_Statics::Enumerators,
+		UE_ARRAY_COUNT(Z_Construct_UEnum_SuperManager_E_ChannelPackingType_Statics::Enumerators),
+		RF_Public|RF_Transient|RF_MarkAsNative,
+		EEnumFlags::None,
+		(uint8)UEnum::ECppForm::EnumClass,
+		METADATA_PARAMS(Z_Construct_UEnum_SuperManager_E_ChannelPackingType_Statics::Enum_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UEnum_SuperManager_E_ChannelPackingType_Statics::Enum_MetaDataParams))
+	};
+	UEnum* Z_Construct_UEnum_SuperManager_E_ChannelPackingType()
+	{
+		if (!Z_Registration_Info_UEnum_E_ChannelPackingType.InnerSingleton)
+		{
+			UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_E_ChannelPackingType.InnerSingleton, Z_Construct_UEnum_SuperManager_E_ChannelPackingType_Statics::EnumParams);
+		}
+		return Z_Registration_Info_UEnum_E_ChannelPackingType.InnerSingleton;
+	}
 	DEFINE_FUNCTION(UQuickMaterialCreationWidget::execCreateMaterialFromSelectedTextures)
 	{
 		P_FINISH;
@@ -72,6 +135,11 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_MaterialName_MetaData[];
 #endif
 		static const UECodeGen_Private::FStrPropertyParams NewProp_MaterialName;
+		static const UECodeGen_Private::FBytePropertyParams NewProp_ChannelPackingType_Underlying;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ChannelPackingType_MetaData[];
+#endif
+		static const UECodeGen_Private::FEnumPropertyParams NewProp_ChannelPackingType;
 		static const UECodeGen_Private::FStrPropertyParams NewProp_BaseColorArray_Inner;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_BaseColorArray_MetaData[];
@@ -97,6 +165,11 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_AmbientOcclusionArray_MetaData[];
 #endif
 		static const UECodeGen_Private::FArrayPropertyParams NewProp_AmbientOcclusionArray;
+		static const UECodeGen_Private::FStrPropertyParams NewProp_ORMArray_Inner;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ORMArray_MetaData[];
+#endif
+		static const UECodeGen_Private::FArrayPropertyParams NewProp_ORMArray;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -110,7 +183,6 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::Class_MetaDataParams[] = {
-		{ "Comment", "/**\n * \n */" },
 		{ "IncludePath", "AssetActions/QuickMaterialCreationWidget.h" },
 		{ "ModuleRelativePath", "Public/AssetActions/QuickMaterialCreationWidget.h" },
 	};
@@ -134,6 +206,15 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 	};
 #endif
 	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MaterialName = { "MaterialName", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, MaterialName), METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MaterialName_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MaterialName_MetaData)) };
+	const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ChannelPackingType_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ChannelPackingType_MetaData[] = {
+		{ "Category", "CreateMaterialFromSelectedTextures" },
+		{ "EditCondition", "bCustomMaterialName" },
+		{ "ModuleRelativePath", "Public/AssetActions/QuickMaterialCreationWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ChannelPackingType = { "ChannelPackingType", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, ChannelPackingType), Z_Construct_UEnum_SuperManager_E_ChannelPackingType, METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ChannelPackingType_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ChannelPackingType_MetaData)) }; // 2447154149
 	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray_Inner = { "BaseColorArray", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, 0, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray_MetaData[] = {
@@ -174,9 +255,19 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 	};
 #endif
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray = { "AmbientOcclusionArray", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, AmbientOcclusionArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray_MetaData)) };
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ORMArray_Inner = { "ORMArray", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, 0, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ORMArray_MetaData[] = {
+		{ "Category", "Supported Texture Names" },
+		{ "ModuleRelativePath", "Public/AssetActions/QuickMaterialCreationWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ORMArray = { "ORMArray", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickMaterialCreationWidget, ORMArray), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ORMArray_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ORMArray_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_bCustomMaterialName,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MaterialName,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ChannelPackingType_Underlying,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ChannelPackingType,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_BaseColorArray,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_MetallicArray_Inner,
@@ -187,6 +278,8 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_NormalArray,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_AmbientOcclusionArray,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ORMArray_Inner,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::NewProp_ORMArray,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UQuickMaterialCreationWidget_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UQuickMaterialCreationWidget>::IsAbstract,
@@ -222,13 +315,17 @@ void EmptyLinkFunctionForGeneratedCodeQuickMaterialCreationWidget() {}
 	UQuickMaterialCreationWidget::~UQuickMaterialCreationWidget() {}
 	struct Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics
 	{
+		static const FEnumRegisterCompiledInInfo EnumInfo[];
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UQuickMaterialCreationWidget, UQuickMaterialCreationWidget::StaticClass, TEXT("UQuickMaterialCreationWidget"), &Z_Registration_Info_UClass_UQuickMaterialCreationWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuickMaterialCreationWidget), 3211918662U) },
+	const FEnumRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::EnumInfo[] = {
+		{ E_ChannelPackingType_StaticEnum, TEXT("E_ChannelPackingType"), &Z_Registration_Info_UEnum_E_ChannelPackingType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2447154149U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_3632618044(TEXT("/Script/SuperManager"),
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::ClassInfo[] = {
+		{ Z_Construct_UClass_UQuickMaterialCreationWidget, UQuickMaterialCreationWidget::StaticClass, TEXT("UQuickMaterialCreationWidget"), &Z_Registration_Info_UClass_UQuickMaterialCreationWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuickMaterialCreationWidget), 3006862844U) },
+	};
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_2402558978(TEXT("/Script/SuperManager"),
 		Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::ClassInfo),
 		nullptr, 0,
-		nullptr, 0);
+		Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_AssetActions_QuickMaterialCreationWidget_h_Statics::EnumInfo));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

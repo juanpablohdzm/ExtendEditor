@@ -1,4 +1,6 @@
-﻿#include "Misc/MessageDialog.h"
+﻿#pragma once
+
+#include "Misc/MessageDialog.h"
 #include "Widgets/Notifications/SNotificationList.h"
 #include "Framework/Notifications/NotificationManager.h"
 
