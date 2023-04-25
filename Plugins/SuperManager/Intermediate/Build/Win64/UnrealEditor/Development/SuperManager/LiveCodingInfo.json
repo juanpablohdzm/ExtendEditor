@@ -3,15 +3,15 @@
 	{
 		"Module.SuperManager.cpp.obj": [
 			"QuickAssetAction.gen.cpp.obj",
+			"QuickMaterialCreationWidget.gen.cpp.obj",
 			"QuickAssetAction.cpp.obj",
+			"QuickMaterialCreationWidget.cpp.obj",
 			"SuperManagerStyle.cpp.obj",
 			"AdvanceDeletionWidget.cpp.obj",
 			"SuperManager.cpp.obj",
 			"QuickActorActionsWidget.gen.cpp.obj",
-			"QuickMaterialCreationWidget.gen.cpp.obj",
 			"SuperManager.init.gen.cpp.obj",
-			"QuickActorActionsWidget.cpp.obj",
-			"QuickMaterialCreationWidget.cpp.obj"
+			"QuickActorActionsWidget.cpp.obj"
 		]
 	}
 }
