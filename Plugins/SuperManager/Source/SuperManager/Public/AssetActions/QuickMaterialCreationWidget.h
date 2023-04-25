@@ -97,7 +97,7 @@ private:
 
 	bool CheckIsNameUsed(const FString& FolderPathToCheck, const FString& MaterialNameToCheck);
 	UMaterial* CreateMaterialAsset(const FString& NameOfMaterial, const FString& Path);
-	UMaterialInstanceConstant* CreateMaterialInstance(const FString& MIName, const FString& Path, UMaterial* CreatedMaterial);
+	class UMaterialInstanceConstant* CreateMaterialInstance(const FString& MIName, const FString& Path, UMaterial* CreatedMaterial);
 	void CreateMaterialNodes(UMaterial* CreatedMaterial, UTexture2D* SelectedTexture, uint32& PinConnectedCounter);
 	void CreateMaterialNodesORM(UMaterial* CreatedMaterial, UTexture2D* SelectedTexture, uint32& PinConnectedCounter);
 #pragma endregion

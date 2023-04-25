@@ -7,8 +7,10 @@
 			"SuperManagerStyle.cpp.obj",
 			"AdvanceDeletionWidget.cpp.obj",
 			"SuperManager.cpp.obj",
+			"QuickActorActionsWidget.gen.cpp.obj",
 			"QuickMaterialCreationWidget.gen.cpp.obj",
 			"SuperManager.init.gen.cpp.obj",
+			"QuickActorActionsWidget.cpp.obj",
 			"QuickMaterialCreationWidget.cpp.obj"
 		]
 	}
