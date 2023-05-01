@@ -85,6 +85,16 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ActorBatchDuplication")
 	FRandomActorRotation RandomActorRotation;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ActorBatchDuplication")
+	bool bRandomizeScale = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ActorBatchDuplication", meta = (EditCondition = "bRandomizeScale"))
+	float ScaleMin = .8f;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ActorBatchDuplication", meta = (EditCondition = "bRandomizeScale"))
+	float ScaleMax = .8f;
+	
 private:
 	UPROPERTY()
 	class UEditorActorSubsystem* EditorActorSubsystem;
