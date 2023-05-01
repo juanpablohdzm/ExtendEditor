@@ -4,9 +4,11 @@
 
 #include "AssetToolsModule.h"
 #include "ContentBrowserModule.h"
+#include "DebugHeader.h"
 #include "EditorAssetLibrary.h"
-#include "EditorUtilityLibrary.h"
+#include "LevelEditor.h"
 #include "ObjectTools.h"
+#include "Selection.h"
 #include "AssetRegistry/AssetRegistryModule.h"
 #include "Chaos/AABB.h"
 #include "Chaos/AABB.h"
@@ -20,6 +22,8 @@ void FSuperManagerModule::StartupModule()
 	FSuperManagerStyle::InitializeIcons();
 	InitCBMenuExtension();
 	RegisterAdvanceDeletionTab();
+	InitLevelEditorExtension();
+	InitCustomSelectionEvent();
 }
 
 void FSuperManagerModule::ShutdownModule()
@@ -212,6 +216,63 @@ TArray<TSharedPtr<FAssetData>> FSuperManagerModule::GetAssetsDataUnderSelectedFo
 	}
 
 	return AvailableAssetsData;
+}
+
+void FSuperManagerModule::InitLevelEditorExtension()
+{
+	auto& LevelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>(TEXT("LevelEditor"));
+
+	TArray<FLevelEditorModule::FLevelViewportMenuExtender_SelectedActors>& LevelEditorMenuExtenders = LevelEditorModule.GetAllLevelViewportContextMenuExtenders();
+	LevelEditorMenuExtenders.Add(FLevelEditorModule::FLevelViewportMenuExtender_SelectedActors::CreateRaw(this, &FSuperManagerModule::CustomLevelEditorMenuExtender));
+}
+
+TSharedRef<FExtender> FSuperManagerModule::CustomLevelEditorMenuExtender(const TSharedRef<FUICommandList> CommandList,
+	const TArray<AActor*> SelectedActors)
+{
+	TSharedRef<FExtender> MenuExtender = MakeShareable(new FExtender());
+
+	if(SelectedActors.Num()> 0)
+	{
+		MenuExtender->AddMenuExtension(FName("ActorOptions"),
+			EExtensionHook::After,
+			CommandList,
+			FMenuExtensionDelegate::CreateRaw(this, &FSuperManagerModule::AddLevelEditorMenuExtension));
+	}
+	
+	return MenuExtender;
+}
+
+void FSuperManagerModule::AddLevelEditorMenuExtension(FMenuBuilder& MenuBuilder)
+{
+	MenuBuilder.AddMenuEntry(FText::FromString("LockActorInLevel"), FText::FromString("LockActorInLevel"),
+		FSlateIcon(), FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnLockActorInLevel));
+
+	MenuBuilder.AddMenuEntry(FText::FromString("UnlockActorInLevel"), FText::FromString("UnlockActorInLevel"),
+		FSlateIcon(),FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnUnlockActorInLevel));
+}
+
+void FSuperManagerModule::OnLockActorInLevel()
+{
+	Print("Lock ",FColor::Black);
+}
+
+void FSuperManagerModule::OnUnlockActorInLevel()
+{
+	Print("Unlock",FColor::Black);
+}
+
+void FSuperManagerModule::InitCustomSelectionEvent()
+{
+	USelection* UserSelection = GEditor->GetSelectedActors();
+	UserSelection->SelectObjectEvent.AddRaw(this,&FSuperManagerModule::OnActorSelected);
+}
+
+void FSuperManagerModule::OnActorSelected(UObject* SelectedObject)
+{
+	if(AActor* SelectedActor = Cast<AActor>(SelectedObject);SelectedActor)
+	{
+		Print(SelectedActor->GetActorLabel(), FColor::Red);
+	}
 }
 
 
