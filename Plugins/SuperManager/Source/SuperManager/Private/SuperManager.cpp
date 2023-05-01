@@ -14,6 +14,7 @@
 #include "Chaos/AABB.h"
 #include "CustomStyle/SuperManagerStyle.h"
 #include "SlateWidgets/AdvanceDeletionWidget.h"
+#include "Subsystems/EditorActorSubsystem.h"
 
 #define LOCTEXT_NAMESPACE "FSuperManagerModule"
 
@@ -253,12 +254,42 @@ void FSuperManagerModule::AddLevelEditorMenuExtension(FMenuBuilder& MenuBuilder)
 
 void FSuperManagerModule::OnLockActorInLevel()
 {
-	Print("Lock ",FColor::Black);
+	if(!SetEditorActorSubsystem()) return;
+
+	TArray<AActor*> SelectedActors = WeakEditorActorSubsystem->GetSelectedLevelActors();
+	if(SelectedActors.Num() == 0) return;
+
+	for(AActor* SelectedActor : SelectedActors)
+	{
+		LockActorSelection(SelectedActor);
+		WeakEditorActorSubsystem->SetActorSelectionState(SelectedActor, false);
+	}
 }
 
 void FSuperManagerModule::OnUnlockActorInLevel()
 {
-	Print("Unlock",FColor::Black);
+	if(!SetEditorActorSubsystem()) return;
+
+	TArray<AActor*> AllActorsInLevel = WeakEditorActorSubsystem->GetAllLevelActors();
+	TArray<AActor*> AllLockedActors;
+
+	for(AActor* Actor : AllActorsInLevel)
+	{
+		if(!Actor) continue;
+
+		if(CheckIsActorSelectionLocked(Actor))
+		{
+			AllLockedActors.Add(Actor);
+		}
+	}
+
+	if(AllLockedActors.Num()==0)
+		return;
+
+	for(AActor* LockedActor : AllLockedActors)
+	{
+		UnlockActorSelection(LockedActor);
+	}
 }
 
 void FSuperManagerModule::InitCustomSelectionEvent()
@@ -269,16 +300,48 @@ void FSuperManagerModule::InitCustomSelectionEvent()
 
 void FSuperManagerModule::OnActorSelected(UObject* SelectedObject)
 {
+	if(!SetEditorActorSubsystem()) return;
 	if(AActor* SelectedActor = Cast<AActor>(SelectedObject);SelectedActor)
 	{
-		Print(SelectedActor->GetActorLabel(), FColor::Red);
+		if(CheckIsActorSelectionLocked(SelectedActor))
+		{
+			WeakEditorActorSubsystem->SetActorSelectionState(SelectedActor, false);
+		}
 	}
+}
+
+void FSuperManagerModule::LockActorSelection(AActor* ActorToProcess)
+{
+	if(!ActorToProcess) return;
+	if(ActorToProcess->ActorHasTag(FName("Locked"))) return;
+	ActorToProcess->Tags.Add(FName("Locked"));
+}
+
+void FSuperManagerModule::UnlockActorSelection(AActor* ActorToProcess)
+{
+	if(!ActorToProcess) return;
+	if(!ActorToProcess->ActorHasTag(FName("Locked"))) return;
+	ActorToProcess->Tags.Remove(FName("Locked"));
+}
+
+bool FSuperManagerModule::CheckIsActorSelectionLocked(AActor* ActorToProcess)
+{
+	return ActorToProcess->ActorHasTag(FName("Locked"));
 }
 
 
 #pragma endregion
 
 #pragma region ProccessDataForAdvanceDeletionTab
+
+bool FSuperManagerModule::SetEditorActorSubsystem()
+{
+	if(!WeakEditorActorSubsystem.IsValid())
+	{
+		WeakEditorActorSubsystem = GEditor->GetEditorSubsystem<UEditorActorSubsystem>();
+	}
+	return WeakEditorActorSubsystem.IsValid();
+}
 
 bool FSuperManagerModule::DeleteSingleAssetForAssetList(const FAssetData& AssetData)
 {
