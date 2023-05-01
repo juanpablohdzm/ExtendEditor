@@ -14,6 +14,7 @@ void EmptyLinkFunctionForGeneratedCodeQuickActorActionsWidget() {}
 	SUPERMANAGER_API UClass* Z_Construct_UClass_UQuickActorActionsWidget();
 	SUPERMANAGER_API UClass* Z_Construct_UClass_UQuickActorActionsWidget_NoRegister();
 	SUPERMANAGER_API UEnum* Z_Construct_UEnum_SuperManager_E_DuplicationAxis();
+	SUPERMANAGER_API UScriptStruct* Z_Construct_UScriptStruct_FRandomActorRotation();
 	UNREALED_API UClass* Z_Construct_UClass_UEditorActorSubsystem_NoRegister();
 	UPackage* Z_Construct_UPackage__Script_SuperManager();
 // End Cross Module References
@@ -78,6 +79,191 @@ void EmptyLinkFunctionForGeneratedCodeQuickActorActionsWidget() {}
 		}
 		return Z_Registration_Info_UEnum_E_DuplicationAxis.InnerSingleton;
 	}
+	static FStructRegistrationInfo Z_Registration_Info_UScriptStruct_RandomActorRotation;
+class UScriptStruct* FRandomActorRotation::StaticStruct()
+{
+	if (!Z_Registration_Info_UScriptStruct_RandomActorRotation.OuterSingleton)
+	{
+		Z_Registration_Info_UScriptStruct_RandomActorRotation.OuterSingleton = GetStaticStruct(Z_Construct_UScriptStruct_FRandomActorRotation, Z_Construct_UPackage__Script_SuperManager(), TEXT("RandomActorRotation"));
+	}
+	return Z_Registration_Info_UScriptStruct_RandomActorRotation.OuterSingleton;
+}
+template<> SUPERMANAGER_API UScriptStruct* StaticStruct<FRandomActorRotation>()
+{
+	return FRandomActorRotation::StaticStruct();
+}
+	struct Z_Construct_UScriptStruct_FRandomActorRotation_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Struct_MetaDataParams[];
+#endif
+		static void* NewStructOps();
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bRandomizeRotYaw_MetaData[];
+#endif
+		static void NewProp_bRandomizeRotYaw_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bRandomizeRotYaw;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RotYawMin_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_RotYawMin;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RotYawMax_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_RotYawMax;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bRandomizeRotPitch_MetaData[];
+#endif
+		static void NewProp_bRandomizeRotPitch_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bRandomizeRotPitch;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RotPitchMin_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_RotPitchMin;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RotPitchMax_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_RotPitchMax;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bRandomizeRotRoll_MetaData[];
+#endif
+		static void NewProp_bRandomizeRotRoll_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bRandomizeRotRoll;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RotRollMin_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_RotRollMin;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RotRollMax_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_RotRollMax;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+		static const UECodeGen_Private::FStructParams ReturnStructParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::Struct_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	void* Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewStructOps()
+	{
+		return (UScriptStruct::ICppStructOps*)new UScriptStruct::TCppStructOps<FRandomActorRotation>();
+	}
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotYaw_MetaData[] = {
+		{ "Category", "RandomActorRotation" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	void Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotYaw_SetBit(void* Obj)
+	{
+		((FRandomActorRotation*)Obj)->bRandomizeRotYaw = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotYaw = { "bRandomizeRotYaw", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, sizeof(bool), sizeof(FRandomActorRotation), &Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotYaw_SetBit, METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotYaw_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotYaw_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMin_MetaData[] = {
+		{ "Category", "RandomActorRotation" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMin = { "RotYawMin", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(FRandomActorRotation, RotYawMin), METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMin_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMin_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMax_MetaData[] = {
+		{ "Category", "RandomActorRotation" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMax = { "RotYawMax", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(FRandomActorRotation, RotYawMax), METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMax_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMax_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotPitch_MetaData[] = {
+		{ "Category", "RandomActorRotation" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	void Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotPitch_SetBit(void* Obj)
+	{
+		((FRandomActorRotation*)Obj)->bRandomizeRotPitch = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotPitch = { "bRandomizeRotPitch", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, sizeof(bool), sizeof(FRandomActorRotation), &Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotPitch_SetBit, METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotPitch_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotPitch_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMin_MetaData[] = {
+		{ "Category", "RandomActorRotation" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMin = { "RotPitchMin", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(FRandomActorRotation, RotPitchMin), METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMin_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMin_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMax_MetaData[] = {
+		{ "Category", "RandomActorRotation" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMax = { "RotPitchMax", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(FRandomActorRotation, RotPitchMax), METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMax_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMax_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotRoll_MetaData[] = {
+		{ "Category", "RandomActorRotation" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	void Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotRoll_SetBit(void* Obj)
+	{
+		((FRandomActorRotation*)Obj)->bRandomizeRotRoll = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotRoll = { "bRandomizeRotRoll", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, sizeof(bool), sizeof(FRandomActorRotation), &Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotRoll_SetBit, METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotRoll_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotRoll_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMin_MetaData[] = {
+		{ "Category", "RandomActorRotation" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMin = { "RotRollMin", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(FRandomActorRotation, RotRollMin), METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMin_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMin_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMax_MetaData[] = {
+		{ "Category", "RandomActorRotation" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMax = { "RotRollMax", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(FRandomActorRotation, RotRollMax), METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMax_MetaData, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMax_MetaData)) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UScriptStruct_FRandomActorRotation_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotYaw,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMin,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotYawMax,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotPitch,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMin,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotPitchMax,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_bRandomizeRotRoll,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMin,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewProp_RotRollMax,
+	};
+	const UECodeGen_Private::FStructParams Z_Construct_UScriptStruct_FRandomActorRotation_Statics::ReturnStructParams = {
+		(UObject* (*)())Z_Construct_UPackage__Script_SuperManager,
+		nullptr,
+		&NewStructOps,
+		"RandomActorRotation",
+		sizeof(FRandomActorRotation),
+		alignof(FRandomActorRotation),
+		Z_Construct_UScriptStruct_FRandomActorRotation_Statics::PropPointers,
+		UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::PropPointers),
+		RF_Public|RF_Transient|RF_MarkAsNative,
+		EStructFlags(0x00000001),
+		METADATA_PARAMS(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::Struct_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UScriptStruct_FRandomActorRotation_Statics::Struct_MetaDataParams))
+	};
+	UScriptStruct* Z_Construct_UScriptStruct_FRandomActorRotation()
+	{
+		if (!Z_Registration_Info_UScriptStruct_RandomActorRotation.InnerSingleton)
+		{
+			UECodeGen_Private::ConstructUScriptStruct(Z_Registration_Info_UScriptStruct_RandomActorRotation.InnerSingleton, Z_Construct_UScriptStruct_FRandomActorRotation_Statics::ReturnStructParams);
+		}
+		return Z_Registration_Info_UScriptStruct_RandomActorRotation.InnerSingleton;
+	}
+	DEFINE_FUNCTION(UQuickActorActionsWidget::execRandomizeActorTransform)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->RandomizeActorTransform();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(UQuickActorActionsWidget::execDuplicateActors)
 	{
 		P_FINISH;
@@ -97,6 +283,7 @@ void EmptyLinkFunctionForGeneratedCodeQuickActorActionsWidget() {}
 		UClass* Class = UQuickActorActionsWidget::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
 			{ "DuplicateActors", &UQuickActorActionsWidget::execDuplicateActors },
+			{ "RandomizeActorTransform", &UQuickActorActionsWidget::execRandomizeActorTransform },
 			{ "SelectAllActorsWithSimilarName", &UQuickActorActionsWidget::execSelectAllActorsWithSimilarName },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -120,6 +307,29 @@ void EmptyLinkFunctionForGeneratedCodeQuickActorActionsWidget() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UQuickActorActionsWidget_DuplicateActors_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UQuickActorActionsWidget_RandomizeActorTransform_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UQuickActorActionsWidget_RandomizeActorTransform_Statics::Function_MetaDataParams[] = {
+		{ "Category", "" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UQuickActorActionsWidget_RandomizeActorTransform_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UQuickActorActionsWidget, nullptr, "RandomizeActorTransform", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UQuickActorActionsWidget_RandomizeActorTransform_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UQuickActorActionsWidget_RandomizeActorTransform_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UQuickActorActionsWidget_RandomizeActorTransform()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UQuickActorActionsWidget_RandomizeActorTransform_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -175,6 +385,10 @@ void EmptyLinkFunctionForGeneratedCodeQuickActorActionsWidget() {}
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_OffsetDiff;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RandomActorRotation_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_RandomActorRotation;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_EditorActorSubsystem_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_EditorActorSubsystem;
@@ -188,6 +402,7 @@ void EmptyLinkFunctionForGeneratedCodeQuickActorActionsWidget() {}
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_UQuickActorActionsWidget_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_UQuickActorActionsWidget_DuplicateActors, "DuplicateActors" }, // 2118726316
+		{ &Z_Construct_UFunction_UQuickActorActionsWidget_RandomizeActorTransform, "RandomizeActorTransform" }, // 3526407808
 		{ &Z_Construct_UFunction_UQuickActorActionsWidget_SelectAllActorsWithSimilarName, "SelectAllActorsWithSimilarName" }, // 3176862571
 	};
 #if WITH_METADATA
@@ -227,6 +442,13 @@ void EmptyLinkFunctionForGeneratedCodeQuickActorActionsWidget() {}
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_OffsetDiff = { "OffsetDiff", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickActorActionsWidget, OffsetDiff), METADATA_PARAMS(Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_OffsetDiff_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_OffsetDiff_MetaData)) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_RandomActorRotation_MetaData[] = {
+		{ "Category", "ActorBatchDuplication" },
+		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_RandomActorRotation = { "RandomActorRotation", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(UQuickActorActionsWidget, RandomActorRotation), Z_Construct_UScriptStruct_FRandomActorRotation, METADATA_PARAMS(Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_RandomActorRotation_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_RandomActorRotation_MetaData)) }; // 2863866603
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_EditorActorSubsystem_MetaData[] = {
 		{ "ModuleRelativePath", "Public/ActorActions/QuickActorActionsWidget.h" },
 	};
@@ -238,6 +460,7 @@ void EmptyLinkFunctionForGeneratedCodeQuickActorActionsWidget() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_AxisForDuplication,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_NumberOfDuplicates,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_OffsetDiff,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_RandomActorRotation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UQuickActorActionsWidget_Statics::NewProp_EditorActorSubsystem,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UQuickActorActionsWidget_Statics::StaticCppClassTypeInfo = {
@@ -275,16 +498,20 @@ void EmptyLinkFunctionForGeneratedCodeQuickActorActionsWidget() {}
 	struct Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics
 	{
 		static const FEnumRegisterCompiledInInfo EnumInfo[];
+		static const FStructRegisterCompiledInInfo ScriptStructInfo[];
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FEnumRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::EnumInfo[] = {
 		{ E_DuplicationAxis_StaticEnum, TEXT("E_DuplicationAxis"), &Z_Registration_Info_UEnum_E_DuplicationAxis, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2179350869U) },
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UQuickActorActionsWidget, UQuickActorActionsWidget::StaticClass, TEXT("UQuickActorActionsWidget"), &Z_Registration_Info_UClass_UQuickActorActionsWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuickActorActionsWidget), 101777620U) },
+	const FStructRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::ScriptStructInfo[] = {
+		{ FRandomActorRotation::StaticStruct, Z_Construct_UScriptStruct_FRandomActorRotation_Statics::NewStructOps, TEXT("RandomActorRotation"), &Z_Registration_Info_UScriptStruct_RandomActorRotation, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FRandomActorRotation), 2863866603U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_1251111554(TEXT("/Script/SuperManager"),
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::ClassInfo[] = {
+		{ Z_Construct_UClass_UQuickActorActionsWidget, UQuickActorActionsWidget::StaticClass, TEXT("UQuickActorActionsWidget"), &Z_Registration_Info_UClass_UQuickActorActionsWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UQuickActorActionsWidget), 3092683868U) },
+	};
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_365712881(TEXT("/Script/SuperManager"),
 		Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::ClassInfo),
-		nullptr, 0,
+		Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::ScriptStructInfo),
 		Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ExtendEditor_Plugins_SuperManager_Source_SuperManager_Public_ActorActions_QuickActorActionsWidget_h_Statics::EnumInfo));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
