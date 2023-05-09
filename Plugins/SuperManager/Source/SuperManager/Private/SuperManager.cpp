@@ -13,6 +13,7 @@
 #include "Chaos/AABB.h"
 #include "Chaos/AABB.h"
 #include "CustomStyle/SuperManagerStyle.h"
+#include "CustomUICommands/SuperManagerUICommands.h"
 #include "SlateWidgets/AdvanceDeletionWidget.h"
 #include "Subsystems/EditorActorSubsystem.h"
 
@@ -23,6 +24,10 @@ void FSuperManagerModule::StartupModule()
 	FSuperManagerStyle::InitializeIcons();
 	InitCBMenuExtension();
 	RegisterAdvanceDeletionTab();
+
+	FSuperManagerUICommands::Register();
+	InitCustomUICommands();
+	
 	InitLevelEditorExtension();
 	InitCustomSelectionEvent();
 }
@@ -223,6 +228,9 @@ void FSuperManagerModule::InitLevelEditorExtension()
 {
 	auto& LevelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>(TEXT("LevelEditor"));
 
+	TSharedRef<FUICommandList> ExisitingLevelCommands = LevelEditorModule.GetGlobalLevelEditorActions();
+	ExisitingLevelCommands->Append(CustomUICommands.ToSharedRef());
+
 	TArray<FLevelEditorModule::FLevelViewportMenuExtender_SelectedActors>& LevelEditorMenuExtenders = LevelEditorModule.GetAllLevelViewportContextMenuExtenders();
 	LevelEditorMenuExtenders.Add(FLevelEditorModule::FLevelViewportMenuExtender_SelectedActors::CreateRaw(this, &FSuperManagerModule::CustomLevelEditorMenuExtender));
 }
@@ -327,6 +335,23 @@ void FSuperManagerModule::UnlockActorSelection(AActor* ActorToProcess)
 bool FSuperManagerModule::CheckIsActorSelectionLocked(AActor* ActorToProcess)
 {
 	return ActorToProcess->ActorHasTag(FName("Locked"));
+}
+
+void FSuperManagerModule::InitCustomUICommands()
+{
+	CustomUICommands = MakeShareable(new FUICommandList());
+	CustomUICommands->MapAction(FSuperManagerUICommands::Get().LockActorSelection,FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnSelectionLockHotKeyPressed));
+	CustomUICommands->MapAction(FSuperManagerUICommands::Get().UnlockActorSelection,FExecuteAction::CreateRaw(this, &FSuperManagerModule::OnSelectionUnlockHotKeyPressed));
+}
+
+void FSuperManagerModule::OnSelectionLockHotKeyPressed()
+{
+	OnLockActorInLevel();
+}
+
+void FSuperManagerModule::OnSelectionUnlockHotKeyPressed()
+{
+	OnUnlockActorInLevel();
 }
 
 

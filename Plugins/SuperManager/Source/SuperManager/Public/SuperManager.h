@@ -60,6 +60,13 @@ public:
 	void UnlockActorSelection(AActor* ActorToProcess);
 	bool CheckIsActorSelectionLocked(AActor* ActorToProcess);
 #pragma endregion
+
+	TSharedPtr<class FUICommandList> CustomUICommands;
+	void InitCustomUICommands();
+	void OnSelectionLockHotKeyPressed();
+	void OnSelectionUnlockHotKeyPressed();
+	
+	
 	TWeakObjectPtr<class UEditorActorSubsystem> WeakEditorActorSubsystem;
 	bool SetEditorActorSubsystem();
 

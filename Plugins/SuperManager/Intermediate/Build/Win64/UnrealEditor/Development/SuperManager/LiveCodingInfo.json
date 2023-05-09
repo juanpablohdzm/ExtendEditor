@@ -11,6 +11,7 @@
 			"QuickMaterialCreationWidget.cpp.obj",
 			"SuperManagerStyle.cpp.obj",
 			"AdvanceDeletionWidget.cpp.obj",
+			"SuperManagerUICommands.cpp.obj",
 			"SuperManager.cpp.obj"
 		]
 	}

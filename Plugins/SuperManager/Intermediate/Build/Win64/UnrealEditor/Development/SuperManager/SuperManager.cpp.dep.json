@@ -73,7 +73,10 @@
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\brushes\\slatecolorbrush.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\brushes\\slateroundedboxbrush.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\brushes\\slateimagebrush.h",
-            "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\slatewidgets\\advancedeletionwidget.h"
+            "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\customuicommands\\supermanageruicommands.h",
+            "d:\\unrealengine\\extendeditor\\plugins\\supermanager\\source\\supermanager\\public\\slatewidgets\\advancedeletionwidget.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\editor\\unrealed\\public\\subsystems\\editoractorsubsystem.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\unrealed\\uht\\editoractorsubsystem.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

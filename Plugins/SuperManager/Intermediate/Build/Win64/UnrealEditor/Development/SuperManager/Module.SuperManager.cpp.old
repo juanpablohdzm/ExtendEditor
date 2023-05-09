@@ -3,6 +3,7 @@
 #include "D:/UnrealEngine/ExtendEditor/Plugins/SuperManager/Intermediate/Build/Win64/UnrealEditor/Inc/SuperManager/UHT/QuickAssetAction.gen.cpp"
 #include "D:/UnrealEngine/ExtendEditor/Plugins/SuperManager/Intermediate/Build/Win64/UnrealEditor/Inc/SuperManager/UHT/QuickMaterialCreationWidget.gen.cpp"
 #include "D:/UnrealEngine/ExtendEditor/Plugins/SuperManager/Intermediate/Build/Win64/UnrealEditor/Inc/SuperManager/UHT/SuperManager.init.gen.cpp"
+#include "D:/UnrealEngine/ExtendEditor/Plugins/SuperManager/Source/SuperManager/Private/ActorActions/QuickActorActionsWidget.cpp"
 #include "D:/UnrealEngine/ExtendEditor/Plugins/SuperManager/Source/SuperManager/Private/AssetActions/QuickAssetAction.cpp"
 #include "D:/UnrealEngine/ExtendEditor/Plugins/SuperManager/Source/SuperManager/Private/AssetActions/QuickMaterialCreationWidget.cpp"
 #include "D:/UnrealEngine/ExtendEditor/Plugins/SuperManager/Source/SuperManager/Private/CustomStyle/SuperManagerStyle.cpp"
