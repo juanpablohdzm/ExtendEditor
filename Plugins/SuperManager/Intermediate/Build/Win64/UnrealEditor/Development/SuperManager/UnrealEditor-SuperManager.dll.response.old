@@ -35,7 +35,8 @@
 /FUNCTIONPADMIN:6
 "D:\UnrealEngine\ExtendEditor\Intermediate\Build\Win64\ExtendEditorEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h.obj"
 "D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Module.SuperManager.cpp.obj"
-"D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\SuperManagerUICommands.cpp.obj"
+"D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\OutlinerSelectionColumn.cpp.obj"
+"D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\SuperManagerStyle.cpp.obj"
 "D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Intermediate\Build\Win64\UnrealEditor\Development\SuperManager\Default.rc2.res"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\CoreUObject\UnrealEditor-CoreUObject.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\Engine\UnrealEditor-Engine.lib"
@@ -51,6 +52,7 @@
 "..\Intermediate\Build\Win64\UnrealEditor\Development\ContentBrowser\UnrealEditor-ContentBrowser.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\InputCore\UnrealEditor-InputCore.lib"
 "..\Intermediate\Build\Win64\UnrealEditor\Development\Projects\UnrealEditor-Projects.lib"
+"..\Intermediate\Build\Win64\UnrealEditor\Development\SceneOutliner\UnrealEditor-SceneOutliner.lib"
 "delayimp.lib"
 "wininet.lib"
 "rpcrt4.lib"

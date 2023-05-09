@@ -21,4 +21,6 @@ public:
 	{
 		return StyleSetName;
 	}
+
+	static TSharedRef<FSlateStyleSet> GetCreatedStyleSet() { return CreatedSlateStyleSet.ToSharedRef();}
 };

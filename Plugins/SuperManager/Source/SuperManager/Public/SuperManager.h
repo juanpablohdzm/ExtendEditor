@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ISceneOutliner.h"
 #include "Modules/ModuleManager.h"
 
 class FSuperManagerModule : public IModuleInterface
@@ -65,6 +66,9 @@ public:
 	void InitCustomUICommands();
 	void OnSelectionLockHotKeyPressed();
 	void OnSelectionUnlockHotKeyPressed();
+
+	TSharedRef<ISceneOutlinerColumn> CreateSelectionLockColumn(ISceneOutliner& SceneOutliner);
+	void InitSceneOutlinerColumnExtension();
 	
 	
 	TWeakObjectPtr<class UEditorActorSubsystem> WeakEditorActorSubsystem;

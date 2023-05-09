@@ -294,6 +294,8 @@ D:\UnrealEngine\ExtendEditor\Plugins\SuperManager\Source\SuperManager\Private\Cu
 /I ..\Plugins\FX\Niagara\Source\NiagaraShader\Public
 /I ..\Plugins\FX\Niagara\Source\NiagaraVertexFactories\Public
 /I Developer\DesktopPlatform\Public
+/I ..\Intermediate\Build\Win64\UnrealEditor\Inc\SceneOutliner\UHT
+/I Editor\SceneOutliner\Public
 /external:W0
 /external:I ThirdParty\mimalloc\include
 /external:I ThirdParty\LibTiff\Source\Win64
