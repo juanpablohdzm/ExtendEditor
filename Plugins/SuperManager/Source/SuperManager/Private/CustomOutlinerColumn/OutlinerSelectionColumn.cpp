@@ -3,6 +3,9 @@
 
 #include "CustomOutlinerColumn/OutlinerSelectionColumn.h"
 
+#include "ActorTreeItem.h"
+#include "ISceneOutlinerTreeItem.h"
+#include "SuperManager.h"
 #include "CustomStyle/SuperManagerStyle.h"
 
 
@@ -34,5 +37,34 @@ SHeaderRow::FColumn::FArguments FOutlinerSelectionLockColumn::ConstructHeaderRow
 const TSharedRef<SWidget> FOutlinerSelectionLockColumn::ConstructRowWidget(FSceneOutlinerTreeItemRef TreeItem,
 	const STableRow<FSceneOutlinerTreeItemPtr>& Row)
 {
-	return SNullWidget::NullWidget;
+	FActorTreeItem* ActorTreeItem = TreeItem->CastTo<FActorTreeItem>();
+	if(!ActorTreeItem || !ActorTreeItem->IsValid()) return SNullWidget::NullWidget;
+
+	FSuperManagerModule& SuperManagerModule = FModuleManager::LoadModuleChecked<FSuperManagerModule>(TEXT("SuperManager"));
+	const bool bIsActorSelectionLocked = SuperManagerModule.CheckIsActorSelectionLocked(ActorTreeItem->Actor.Get());
+	
+	TSharedRef<SCheckBox> ConstructedRowWidgetCheckBox = SNew(SCheckBox)
+	.Visibility(EVisibility::Visible)
+	.HAlign(HAlign_Center)
+	.IsChecked(bIsActorSelectionLocked ? ECheckBoxState::Checked : ECheckBoxState::Unchecked)
+	.OnCheckStateChanged(this,&FOutlinerSelectionLockColumn::OnRowWidgetCheckStateChanged, ActorTreeItem->Actor);
+
+	return ConstructedRowWidgetCheckBox;
+}
+
+void FOutlinerSelectionLockColumn::OnRowWidgetCheckStateChanged(ECheckBoxState NewState, TWeakObjectPtr<AActor> ActorTreeItem)
+{
+	FSuperManagerModule& SuperManagerModule = FModuleManager::LoadModuleChecked<FSuperManagerModule>(TEXT("SuperManager"));
+
+	switch (NewState) {
+	case ECheckBoxState::Unchecked:
+
+		SuperManagerModule.ProcessLockingForOutliner(ActorTreeItem.Get(),false);
+		break;
+	case ECheckBoxState::Checked:
+		SuperManagerModule.ProcessLockingForOutliner(ActorTreeItem.Get(),true);
+		break;
+	case ECheckBoxState::Undetermined: break;
+	default: ;
+	}
 }

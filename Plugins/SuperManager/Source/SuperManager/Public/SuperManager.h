@@ -51,6 +51,8 @@ public:
 	void AddLevelEditorMenuExtension(FMenuBuilder& MenuBuilder);
 	void OnLockActorInLevel();
 	void OnUnlockActorInLevel();
+
+	void RefreshSceneOutliner();
 #pragma  endregion 
 
 #pragma region SelectionLock
@@ -83,4 +85,6 @@ public:
 	void ListSameNameAssetsForAssetList( const TArray<TSharedPtr<FAssetData>>&AssetsDataToFilter, TArray<TSharedPtr<FAssetData>>& OutSameNameAssetsData);
 	void SyncCBToClickedAssetForAssetList(const FString& AssetPathToSync);
 	#pragma endregion ProccessDataForAdvanceDeletionTab
+
+	void ProcessLockingForOutliner(AActor* ActorToProces, bool ShouldBeLocked);
 };

@@ -275,6 +275,8 @@ void FSuperManagerModule::OnLockActorInLevel()
 		LockActorSelection(SelectedActor);
 		WeakEditorActorSubsystem->SetActorSelectionState(SelectedActor, false);
 	}
+
+	RefreshSceneOutliner();
 }
 
 void FSuperManagerModule::OnUnlockActorInLevel()
@@ -300,6 +302,18 @@ void FSuperManagerModule::OnUnlockActorInLevel()
 	for(AActor* LockedActor : AllLockedActors)
 	{
 		UnlockActorSelection(LockedActor);
+	}
+
+	RefreshSceneOutliner();
+}
+
+void FSuperManagerModule::RefreshSceneOutliner()
+{
+	FLevelEditorModule& LevelEditorModule = FModuleManager::LoadModuleChecked<FLevelEditorModule>(TEXT("LevelEditor"));
+	auto SceneOutliner = LevelEditorModule.GetFirstLevelEditor()->GetSceneOutliner();
+	if(SceneOutliner.IsValid())
+	{
+		SceneOutliner->FullRefresh();
 	}
 }
 
@@ -439,6 +453,21 @@ void FSuperManagerModule::SyncCBToClickedAssetForAssetList(const FString& AssetP
 {
 	TArray<FString> Paths{AssetPathToSync};
 	UEditorAssetLibrary::SyncBrowserToObjects(Paths);
+}
+
+void FSuperManagerModule::ProcessLockingForOutliner(AActor* ActorToProces, bool ShouldBeLocked)
+{
+	if(!SetEditorActorSubsystem()) return;
+	if(ShouldBeLocked)
+	{
+		LockActorSelection(ActorToProces);
+		WeakEditorActorSubsystem->SetActorSelectionState(ActorToProces, false);
+	}
+	else
+	{
+		UnlockActorSelection(ActorToProces);
+		WeakEditorActorSubsystem->SetActorSelectionState(ActorToProces, true);
+	}
 }
 #pragma endregion ProccessDataForAdvanceDeletionTab
 #undef LOCTEXT_NAMESPACE
