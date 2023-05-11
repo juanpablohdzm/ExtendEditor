@@ -39,6 +39,8 @@ void FSuperManagerModule::ShutdownModule()
 {
 	FGlobalTabmanager::Get()->UnregisterNomadTabSpawner(FName("AdvanceDeletion"));
 	FSuperManagerStyle::ShutDown();
+	FSuperManagerUICommands::Unregister();
+	UnregisterSceneOutlinerColumnExtension();
 	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 	// we call this function before unloading the module.
 }
@@ -197,6 +199,7 @@ void FSuperManagerModule::RegisterAdvanceDeletionTab()
 
 TSharedRef<SDockTab> FSuperManagerModule::OnSpawnAdvanceDeletionTab(const FSpawnTabArgs& SpawnTabArgs)
 {
+	if(FolderPathsSelected.Num() == 0) return SNew(SDockTab).TabRole(NomadTab);
 	return SNew(SDockTab).TabRole(NomadTab)
 	[
 		SNew(SAdvanceDeletionTab)
@@ -382,6 +385,13 @@ void FSuperManagerModule::InitSceneOutlinerColumnExtension()
 		FCreateSceneOutlinerColumn::CreateRaw(this, &FSuperManagerModule::CreateSelectionLockColumn));
 	SceneOutlinerModule.RegisterDefaultColumnType<FOutlinerSelectionLockColumn>(SelectionLockColumnInfo);
 }
+
+void FSuperManagerModule::UnregisterSceneOutlinerColumnExtension()
+{
+	FSceneOutlinerModule& SceneOutlinerModule = FModuleManager::LoadModuleChecked<FSceneOutlinerModule>(TEXT("SceneOutliner"));
+	SceneOutlinerModule.UnRegisterColumnType<FOutlinerSelectionLockColumn>();
+}
+
 TSharedRef<ISceneOutlinerColumn> FSuperManagerModule::CreateSelectionLockColumn(ISceneOutliner& SceneOutliner)
 {
 	return MakeShareable(new FOutlinerSelectionLockColumn(SceneOutliner));

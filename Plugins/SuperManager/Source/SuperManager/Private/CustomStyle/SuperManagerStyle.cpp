@@ -4,6 +4,7 @@
 #include "CustomStyle/SuperManagerStyle.h"
 #include "Interfaces/IPluginManager.h"
 #include "Styling/SlateStyleRegistry.h"
+#include "Styling/StyleColors.h"
 
 FName FSuperManagerStyle::StyleSetName = FName("SuperManagerStyle");
 TSharedPtr<FSlateStyleSet> FSuperManagerStyle::CreatedSlateStyleSet = nullptr;
@@ -34,7 +35,19 @@ TSharedRef<FSlateStyleSet> FSuperManagerStyle::CreateSlateStyleSet()
 	CustomStyleSet->Set("ContentBrowser.AdvanceDeletion",
 		new FSlateImageBrush(IconDirectory/"AdvanceDeletion.png",
 			Icon16x16));
+
+	const FCheckBoxStyle SelectionLockToggleButtonStyle =FCheckBoxStyle()
+	.SetCheckBoxType(ESlateCheckBoxType::ToggleButton)
+	.SetPadding(FMargin(10.0f))
+	.SetUncheckedImage(FSlateImageBrush(IconDirectory/"DeleteUnusedAsset.png", Icon16x16,FStyleColors::White25))
+	.SetUncheckedHoveredImage(FSlateImageBrush(IconDirectory/"DeleteUnusedAsset.png", Icon16x16,FStyleColors::AccentBlue))
+	.SetUncheckedPressedImage(FSlateImageBrush(IconDirectory/"DeleteUnusedAsset.png", Icon16x16,FStyleColors::Foreground))
+	.SetCheckedImage(FSlateImageBrush(IconDirectory/"DeleteUnusedAsset.png", Icon16x16,FStyleColors::Foreground))
+	.SetCheckedHoveredImage(FSlateImageBrush(IconDirectory/"DeleteUnusedAsset.png", Icon16x16,FStyleColors::AccentBlack))
+	.SetCheckedPressedImage(FSlateImageBrush(IconDirectory/"DeleteUnusedAsset.png", Icon16x16,FStyleColors::AccentGray));
 	
+	
+	CustomStyleSet->Set("SceneOutliner.SelectionLock", SelectionLockToggleButtonStyle);
 	return CustomStyleSet;
 }
 

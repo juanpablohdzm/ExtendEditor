@@ -22,7 +22,9 @@
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\projects\\public\\moduledescriptor.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\projects\\public\\pluginreferencedescriptor.h",
             "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\projects\\public\\versescope.h",
-            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\styling\\slatestyleregistry.h"
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\styling\\slatestyleregistry.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\source\\runtime\\slatecore\\public\\styling\\stylecolors.h",
+            "c:\\program files\\epic games\\ue_5.1\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\slatecore\\uht\\stylecolors.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

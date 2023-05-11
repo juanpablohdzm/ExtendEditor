@@ -71,6 +71,7 @@ public:
 
 	TSharedRef<ISceneOutlinerColumn> CreateSelectionLockColumn(ISceneOutliner& SceneOutliner);
 	void InitSceneOutlinerColumnExtension();
+	void UnregisterSceneOutlinerColumnExtension();
 	
 	
 	TWeakObjectPtr<class UEditorActorSubsystem> WeakEditorActorSubsystem;
